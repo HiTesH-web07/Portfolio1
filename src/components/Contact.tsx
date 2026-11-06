@@ -39,7 +39,7 @@ export default function Contact() {
             <SplitWords text="The journey is still being built." />{' '}
             <SplitWords text="Let's build something together." className="serif text-[#E8C6B8]" />
           </h2>
-          <p className="reveal mt-6 max-w-xl text-lg text-[#D9E4DC]">{profile.availability}. Based in {profile.location}. The fastest way to reach me is email.</p>
+          <p className="reveal mt-6 max-w-xl text-lg text-[#D9E4DC]">Based in {profile.location}. Have a product to build or a role to talk about? Email is the fastest way to reach me.</p>
           <div className="reveal mt-8 flex flex-wrap items-center gap-3">
             <motion.a whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} href={`mailto:${profile.email}`} className="btn bg-[#F1EBDD] text-[#24231F] hover:bg-white"><Mail size={17} />{profile.email}</motion.a>
             <button onClick={copy} className="btn border border-[#F1EBDD]/25 hover:bg-white/5" aria-live="polite">{copied ? <><Check size={17} />Copied</> : <><Copy size={17} />Copy email</>}</button>

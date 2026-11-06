@@ -7,22 +7,21 @@ export const profile = {
   firstName: 'Hitesh',
   role: 'Full-stack developer',
   title: 'Integration Solution Engineer at viaSocket',
-  headline: 'Full-stack engineer building production APIs and web products with Next.js and Node.js.',
+  headline: 'Full-stack developer building web products end to end with React, Next.js and Node.js.',
   hero: {
     hello: "Hi, I'm Hitesh Ahuja.",
     tagline: ['Curious mind.', "Builder's energy.", 'Endless ideas.'],
     support:
-      'Full-stack developer building production APIs, web products and intelligent automation experiences.',
+      'Full-stack developer who builds products end to end: React and Next.js interfaces, Node.js backends, databases, and the automations that tie it all together.',
   },
   motto: 'Curious by nature. Persistent by choice. A builder by passion.',
   location: 'Indore, India',
-  availability: 'Open to on-site roles in Bengaluru',
   email: 'hiteshahuja633@gmail.com',
   linkedin: 'https://linkedin.com/in/hiteshahuja07',
   github: 'https://github.com/HiTesHweb07',
   resume: '/resume/Hitesh_Ahuja_Resume.pdf',
   about:
-    '2026 B.Tech Computer Science graduate and software engineer. I work on the viaSocket SaaS platform (Next.js and Node.js) at Walkover and have built 100+ API integration modules. I have strong DSA and OOP fundamentals, write automated tests, debug across frontend, API and database layers, and use AI coding tools (Claude Code) while reviewing and testing every line I ship.',
+    '2026 B.Tech Computer Science graduate and full-stack developer. At Walkover I build features across the viaSocket SaaS platform, from the React and Next.js frontend to the Node.js backend, and I automate things: workflows that connect apps so people stop doing repetitive work. I design databases, write automated tests, debug across UI, API and data layers, and use AI coding tools (Claude Code) while reviewing and testing every line I ship.',
 };
 
 export type Pose = 'wave' | 'explore' | 'laptop' | 'think' | 'puzzled' | 'celebrate' | 'closing';
@@ -30,43 +29,43 @@ export type Pose = 'wave' | 'explore' | 'laptop' | 'think' | 'puzzled' | 'celebr
 export const journey: { id: string; when: string; title: string; body: string; pose: Pose; tags: string[] }[] = [
   {
     id: 'begin',
-    when: '2022',
-    title: 'It started with "how does this work?"',
-    body: 'I joined B.Tech Computer Science and Engineering at Medi-Caps University, Indore. Curiosity about how software actually runs pulled me into data structures, algorithms and object oriented design.',
+    when: '2022 · Day one',
+    title: 'Hello, World. Hello, Medi-Caps.',
+    body: 'I walked into B.Tech Computer Science at Medi-Caps University, Indore, with one question I could not shake: how does software actually work? The answer started with C, C++ and a lot of data structures.',
     pose: 'wave',
-    tags: ['B.Tech CSE', 'DSA in C/C++', 'OOP'],
+    tags: ['B.Tech CSE', 'C / C++', 'DSA'],
   },
   {
-    id: 'explore',
-    when: 'During college',
-    title: 'Learning by building',
-    body: 'I learned web development the hands-on way: a Pokedex and a product listing page with React and Redux Toolkit, an employee management dashboard with Next.js, and SENSAI, an AI career coach on the Gemini API.',
+    id: 'huddles',
+    when: 'College years',
+    title: 'Late-night huddles, loud ideas.',
+    body: 'The best lessons happened after class: late-night huddles with friends, ideas sketched on whatever was nearby, and "one more bug" turning into sunrise. I learned the full stack by shipping, from React screens to Node.js APIs to PostgreSQL tables, and built SENSAI, an AI career coach on the Gemini API.',
     pose: 'explore',
-    tags: ['React', 'Next.js', 'Redux Toolkit', 'Gemini API'],
+    tags: ['React', 'Node.js', 'PostgreSQL', 'Gemini API'],
   },
   {
     id: 'thinkdebug',
-    when: 'Feb to Apr 2025',
-    title: 'First production codebase',
-    body: 'As a Frontend Developer Intern at Think Debug I worked on Kulies, a B2B2C e-commerce product, in a six-engineer Agile team: reusable React components, REST API integrations, and performance work.',
+    when: 'Feb 2025 · First real codebase',
+    title: 'Pull requests, code reviews, deadlines.',
+    body: 'My internship at Think Debug put me inside a production codebase with six engineers and weekly sprints. On Kulies, a B2B2C e-commerce product, I built reusable React components, wired up REST APIs and made the frontend 18% faster.',
     pose: 'laptop',
-    tags: ['Think Debug', 'Kulies', 'Weekly sprints'],
+    tags: ['Think Debug', 'Kulies', 'React', 'Redux Toolkit'],
   },
   {
     id: 'viasocket',
-    when: 'May 2026 to now',
-    title: 'Real-world engineering at scale',
-    body: 'At Walkover Web Solution I build on viaSocket, a no-code AI automation platform. I have built 100+ reusable API integration modules and debug the hard parts: OAuth, webhooks, pagination and 4xx/5xx errors.',
+    when: 'May 2026 · Campus to corporate',
+    title: 'Graduated, then straight into product.',
+    body: 'I finished my degree in May 2026 and joined Walkover the same month. On viaSocket I work across the stack, from Next.js interfaces to Node.js services, and I automate things: workflows that connect apps so people stop doing the same task twice.',
     pose: 'think',
-    tags: ['viaSocket', 'OAuth 2.0', 'Webhooks', 'Node.js'],
+    tags: ['viaSocket', 'Next.js', 'Node.js', 'Automation'],
   },
   {
     id: 'next',
-    when: "What's next",
-    title: 'Bigger products, smarter systems',
-    body: 'I want to build larger products and go deeper into AI. Meeting-to-Action Closer and Cairn are where that is already happening, alongside IBM courses in Agentic AI and Generative AI.',
+    when: 'Now',
+    title: 'Building whole products, end to end.',
+    body: 'On my own time I design, build and ship complete products: Meeting-to-Action Closer and Cairn, each with its own frontend, backend, database, tests and AI features. Next: bigger products and deeper AI.',
     pose: 'celebrate',
-    tags: ['AI products', 'Automation', 'Always learning'],
+    tags: ['Full stack', 'AI products', 'Always learning'],
   },
 ];
 
@@ -81,21 +80,22 @@ export const experience = [
     when: 'May 2026 – Present',
     where: 'Indore, India (Remote)',
     summary:
-      'I build and ship features on viaSocket, a no-code AI automation platform built on Next.js and Node.js, across the React frontend and the Node.js backend APIs.',
+      'I build and ship features across the full stack of viaSocket, a no-code AI automation platform: React and Next.js on the front, Node.js on the back. And I automate things, building multi-step workflows that connect apps so people stop doing repetitive work.',
     stats: [
-      { value: 100, suffix: '+', label: 'API integration modules I built and maintain' },
       { value: 100000, suffix: '+', label: 'users on the viaSocket platform' },
       { value: 2200, suffix: '+', label: 'SaaS apps the platform connects' },
+      { value: 100, suffix: '+', label: 'integration modules I built and maintain' },
     ] as Stat[],
     points: [
-      'Designed, developed, tested and maintained 100+ reusable API integration modules in Node.js and JavaScript, plus multi-step workflow automations.',
-      'Implemented OAuth 2.0 and API key authentication, webhooks, pagination and JSON data mapping.',
-      'Turned UI/UX designs and wireframes into complete user flows: dynamic input forms with field validation and clear error handling.',
+      'Build and ship product features across the React/Next.js frontend and the Node.js backend, and debug production issues across client, API and data layers.',
+      'Turn UI/UX designs and wireframes into complete user flows: dynamic input forms with field validation and clear error handling.',
+      'Automate business workflows: multi-step automations that connect apps on the platform.',
+      'Designed, developed, tested and maintained 100+ reusable integration modules in Node.js, with OAuth 2.0, API keys, webhooks, pagination and JSON data mapping.',
       'Tested APIs against live endpoints and root-caused 4xx/5xx errors and pagination mismatches.',
       'Wrote technical documentation and worked with senior engineers, Product and Design through Git, pull requests and code reviews.',
       'Use AI coding tools to move faster, and test and review every line of AI-assisted code before handoff.',
     ],
-    stack: ['Next.js', 'React', 'Node.js', 'OAuth 2.0', 'Webhooks', 'Postman'],
+    stack: ['Next.js', 'React', 'Node.js', 'Automation', 'OAuth 2.0', 'Webhooks'],
   },
   {
     id: 'thinkdebug',
@@ -235,118 +235,85 @@ export const projects: Project[] = [
     image: null,
     tone: 'clay',
   },
-  {
-    id: 'employees',
-    name: 'Employee Management App',
-    kicker: 'Dashboard',
-    year: '',
-    short: 'A dashboard with search, filters, sorting and dynamic employee detail pages.',
-    problem: 'Finding one person in a long staff list is slow without good search and filters.',
-    solution: 'A Next.js dashboard over the DummyJSON users API with search, filters, sorting and a detail page per employee.',
-    contribution: 'Built the whole app.',
-    highlights: ['Search, filters and sorting.', 'Dynamic routes for employee detail pages.'],
-    stack: ['Next.js', 'DummyJSON API'],
-    live: null,
-    code: null,
-    image: null,
-    tone: 'paper',
-  },
-  {
-    id: 'pokedex',
-    name: 'Product Listing and Pokedex',
-    kicker: 'Two React apps',
-    year: '',
-    short: 'A product listing page with filtering, sorting and skeleton loading, and a Pokedex on Redux Toolkit.',
-    problem: 'Practice projects to master React state, loading states and forms.',
-    solution:
-      'A product listing with filtering, sorting, skeleton loading and form validation, and a Pokedex app with Redux Toolkit state management.',
-    contribution: 'Built both apps.',
-    highlights: ['Skeleton loading and form validation.', 'Redux Toolkit state management.'],
-    stack: ['React', 'Vite', 'Redux Toolkit', 'Tailwind CSS'],
-    live: null,
-    code: null,
-    image: null,
-    tone: 'sage',
-  },
 ];
 
-// Engineering stories: real kinds of problems from the resume, told as the process I follow.
+// Engineering stories: real kinds of problems from the resume, across the stack, told as the process I follow.
 export const stories = [
-  {
-    id: 'auth',
-    label: 'Authentication failure',
-    where: 'API integrations at viaSocket',
-    steps: {
-      problem: {
-        title: 'The request comes back 401 Unauthorized.',
-        body: 'An integration that should work refuses every call. The UI only says "failed".',
-        code: ['POST /v1/records', '→ 401 Unauthorized', '{ "error": "invalid_token" }'],
-      },
-      investigation: {
-        title: 'Read the request, not the guess.',
-        body: 'Inspect the headers, validate the credentials and scopes, re-read the API documentation and replay the call against the live endpoint in Postman.',
-        code: ['Authorization: Bearer ••••', 'scope: read write ?', 'docs: token type, expiry'],
-      },
-      solution: {
-        title: 'Fix the root cause, then prove it.',
-        body: 'Correct the implementation, test the edge cases and verify the result against the live API before handoff.',
-        code: ['POST /v1/records', '→ 200 OK', 'edge cases: tested'],
-      },
-    },
-  },
-  {
-    id: 'pagination',
-    label: 'Pagination mismatch',
-    where: 'API integrations at viaSocket',
-    steps: {
-      problem: {
-        title: 'Some records go missing between pages.',
-        body: 'The first page looks right, but the totals never add up.',
-        code: ['page 1 → 100 items', 'page 2 → 100 items', 'expected 250, got 200'],
-      },
-      investigation: {
-        title: 'Compare what the API says with what it does.',
-        body: 'Check how the API pages its results in the docs, log every page boundary, and compare the response metadata with what the integration requests.',
-        code: ['next_cursor: "a9f…"', 'requested: offset=200', 'mismatch found'],
-      },
-      solution: {
-        title: 'Page the way the API expects.',
-        body: 'Correct the pagination handling and test the edges: empty pages, the last page and very large result sets.',
-        code: ['pages: 3', 'items: 250 / 250', 'last page: handled'],
-      },
-    },
-  },
   {
     id: 'perf',
     label: 'Slow frontend',
-    where: 'Kulies at Think Debug',
+    where: 'Frontend · Kulies at Think Debug',
     steps: {
       problem: {
         title: 'The UI does more work than it should.',
-        body: 'Components re-render far more often than the data changes.',
+        body: 'Components re-render far more often than the data changes, and the page feels heavier than it is.',
         code: ['<ProductList/> render', '<ProductList/> render', '<ProductList/> render'],
       },
       investigation: {
         title: 'Find who renders, and why.',
         body: 'Trace renders with browser DevTools and look at which props and shared state trigger them.',
-        code: ['props changed: none', 'state: shared slice', 'cause: broad subscription'],
+        code: ['props changed: none', 'state: shared slice', 'cause: too many re-renders'],
       },
       solution: {
         title: 'Refactor, then measure.',
-        body: 'Refactor components and reduce re-renders. The result was an 18% frontend performance improvement.',
+        body: 'Refactor the components and cut the extra re-renders. The frontend got 18% faster.',
         code: ['renders: reduced', 'performance: +18%', 'shipped'],
+      },
+    },
+  },
+  {
+    id: 'duplicates',
+    label: 'Duplicate records',
+    where: 'Database · Meeting-to-Action Closer',
+    steps: {
+      problem: {
+        title: 'One meeting must never become two sets of tasks.',
+        body: 'If the same transcript is processed more than once, a naive write would create every task again.',
+        code: ['transcript #42 → 3 tasks', 'transcript #42 → 3 tasks', 'Asana: 6 tasks ✗'],
+      },
+      investigation: {
+        title: 'Design the write path, not just the happy path.',
+        body: 'Model the data in Prisma so every task has a stable identity, and look at every place a write can be repeated.',
+        code: ['model ActionItem { … }', 'identity: meeting + item', 'repeat paths: listed'],
+      },
+      solution: {
+        title: 'Duplicate-safe writes, proven by tests.',
+        body: 'Make the writes duplicate-safe and cover the core logic with automated tests: 47 of them in the project.',
+        code: ['transcript #42 → 3 tasks', 'replay → 0 new tasks', 'tests: 47 passing'],
+      },
+    },
+  },
+  {
+    id: 'auth',
+    label: 'Authentication failure',
+    where: 'Backend · automations at viaSocket',
+    steps: {
+      problem: {
+        title: 'An automation stops: 401 Unauthorized.',
+        body: 'A workflow that should run keeps failing, and the only message is "failed".',
+        code: ['POST /v1/records', '→ 401 Unauthorized', '{ "error": "invalid_token" }'],
+      },
+      investigation: {
+        title: 'Read the request, not the guess.',
+        body: 'Inspect the headers, validate the credentials and scopes, re-read the documentation and replay the call against the live endpoint in Postman.',
+        code: ['Authorization: Bearer ••••', 'scope: read write ?', 'docs: token type, expiry'],
+      },
+      solution: {
+        title: 'Fix the root cause, then prove it.',
+        body: 'Correct the implementation, test the edge cases and verify the result against the live service before handoff.',
+        code: ['POST /v1/records', '→ 200 OK', 'automation: running'],
       },
     },
   },
 ] as const;
 
 export const skills = [
+  { group: 'Frontend', icon: 'layout', items: ['React.js', 'Next.js', 'TypeScript', 'Redux Toolkit', 'Tailwind CSS', 'HTML5', 'CSS3', 'Bootstrap 5'] },
+  { group: 'Backend', icon: 'server', items: ['Node.js', 'Express.js', 'Next.js API Routes', 'REST APIs', 'Authentication (OAuth 2.0, Clerk)'] },
+  { group: 'Databases', icon: 'database', items: ['PostgreSQL', 'MySQL', 'SQLite', 'Prisma ORM', 'Relational design'] },
+  { group: 'Automation and integrations', icon: 'plug', items: ['Workflow automation', 'Webhooks', 'Third-party APIs', 'Pagination', 'JSON mapping', 'Postman'] },
   { group: 'Languages', icon: 'code', items: ['JavaScript (ES6+)', 'TypeScript', 'Java', 'Python', 'C', 'C++', 'SQL'] },
-  { group: 'Frontend', icon: 'layout', items: ['React.js', 'Next.js', 'Redux Toolkit', 'Tailwind CSS', 'HTML5', 'CSS3', 'Bootstrap 5'] },
-  { group: 'Backend', icon: 'server', items: ['Node.js', 'Express.js', 'Next.js API Routes'] },
-  { group: 'APIs and integrations', icon: 'plug', items: ['REST APIs', 'OAuth 2.0', 'Webhooks', 'Pagination', 'JSON', 'Axios', 'Postman'] },
-  { group: 'Databases', icon: 'database', items: ['PostgreSQL', 'MySQL', 'Prisma ORM', 'Relational design'] },
-  { group: 'Testing and debugging', icon: 'bug', items: ['Jest', 'Debugging', 'Code review', 'Agile/Scrum', 'Documentation'] },
+  { group: 'Testing and quality', icon: 'bug', items: ['Jest', 'Automated tests', 'Debugging', 'Code review', 'Agile/Scrum', 'Documentation'] },
   { group: 'Tools and AI', icon: 'sparkles', items: ['Git', 'GitHub', 'VS Code', 'Browser DevTools', 'Gemini API', 'Claude Code', 'ChatGPT', 'OpenRouter'] },
 ] as const;
 
@@ -374,9 +341,9 @@ export const beyond = [
 
 export const askSuggestions = [
   'Why should we hire Hitesh?',
-  'Tell me about his API integration experience.',
+  'What does he build and automate at viaSocket?',
   'What did he build at Think Debug?',
-  'What are his strongest technical skills?',
+  'What is his full-stack skill set?',
   'Tell me about Meeting-to-Action Closer.',
   'What makes his engineering approach different?',
 ];

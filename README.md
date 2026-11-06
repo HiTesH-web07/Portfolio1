@@ -63,8 +63,6 @@ Settings (environment variables, never committed):
 - Meeting-to-Action Closer: GitHub link
 - SENSAI: live link, GitHub link, screenshot
 - Kulies: description, stack and links beyond the internship work (marked "In progress")
-- Employee Management App: live link, GitHub link, screenshot
-- Product Listing and Pokedex: live links, GitHub links, screenshots
 - "Beyond the code" one-line descriptions: written for you, please confirm the wording
 - Real company logos (typographic marks are used until genuine assets are provided)
 

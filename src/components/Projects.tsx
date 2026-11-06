@@ -132,7 +132,7 @@ export default function Projects() {
   return (
     <section id="work" ref={root} aria-labelledby="work-title" className="py-24 sm:py-32">
       <div className="wrap">
-        <SectionHead id="work-title" eyebrow="03 · Featured projects" title="Things I've brought" accent="to life." intro="Two products I built end to end, followed by the work that taught me how. Open any project for the full case study." />
+        <SectionHead id="work-title" eyebrow="03 · Featured projects" title="Things I've brought" accent="to life." intro="Products I designed, built and shipped end to end: frontend, backend, database, tests and AI. Open any project for the full case study." />
 
         <div className="mt-16 grid gap-20 sm:gap-28">
           {featured.map((p, i) => (
@@ -156,7 +156,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <h3 className="reveal mt-28 font-display text-2xl font-semibold">More projects</h3>
+        <h3 className="reveal mt-28 font-display text-2xl font-semibold">More work</h3>
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {rest.map((p) => (
             <motion.article key={p.id} whileHover={{ y: -6 }} transition={{ type: 'spring', stiffness: 300, damping: 26 }} className="reveal group card flex flex-col overflow-hidden p-3">

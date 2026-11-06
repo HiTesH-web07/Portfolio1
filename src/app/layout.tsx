@@ -8,7 +8,7 @@ import { profile } from '@/data/content';
 
 const site = process.env.SITE_URL || 'https://hitesh-ahuja.embarko.app';
 const description =
-  'Hitesh Ahuja is a full-stack developer and Integration Solution Engineer at viaSocket, building production APIs, web products and AI automation with Next.js and Node.js.';
+  'Hitesh Ahuja is a full-stack developer at viaSocket who builds web products end to end with React, Next.js and Node.js, and automates the work in between.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(site),

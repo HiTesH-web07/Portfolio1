@@ -42,7 +42,7 @@ export default function Stories() {
   return (
     <section id="stories" ref={root} aria-labelledby="stories-title" className="bg-sage/60 py-24 sm:py-32">
       <div className="wrap">
-        <SectionHead id="stories-title" eyebrow="04 · Engineering stories" title="Things don't always work on the" accent="first try." intro="The kinds of problems I actually debug, and the way I work through them. No heroics, just a repeatable process." />
+        <SectionHead id="stories-title" eyebrow="04 · Engineering stories" title="Things don't always work on the" accent="first try." intro="Real problems from across the stack: a slow interface, a database that must never double-write, and an automation that will not authenticate. The process is the same every time." />
       </div>
 
       <div ref={pin} className="lg:flex lg:min-h-screen lg:items-center">
@@ -87,7 +87,7 @@ export default function Stories() {
                       <div className="flex items-center gap-1.5 border-b border-white/10 px-4 py-2.5"><span className="h-2.5 w-2.5 rounded-full bg-[#C2553D]" /><span className="h-2.5 w-2.5 rounded-full bg-[#D3A84A]" /><span className="h-2.5 w-2.5 rounded-full bg-emerald-600" /><span className="ml-2 text-xs text-white/50">{st.key}.log</span></div>
                       <div className="p-4">
                         {step.code.map((line, i) => (
-                          <motion.p key={line} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 + i * 0.18 }} className="leading-7">
+                          <motion.p key={i} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 + i * 0.18 }} className="leading-7">
                             <span className="mr-3 select-none text-white/50">{i + 1}</span>
                             <span className={i === step.code.length - 1 ? (stage === 0 ? 'text-[#F0A08C]' : stage === 2 ? 'text-emerald-400' : 'text-[#E3C77A]') : ''}>{line}</span>
                           </motion.p>

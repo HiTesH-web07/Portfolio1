@@ -15,8 +15,6 @@ const ALIASES: Record<string, RegExp> = {
   'meeting-to-action': /meeting[- ]to[- ]action/i,
   sensai: /\bsensai\b/i,
   kulies: /\bkulies\b/i,
-  employees: /employee management/i,
-  pokedex: /pokedex|product listing page/i,
 };
 const PROJECT_NAMES = projects.filter((p) => ALIASES[p.id]).map((p) => ({ id: p.id, re: ALIASES[p.id] }));
 

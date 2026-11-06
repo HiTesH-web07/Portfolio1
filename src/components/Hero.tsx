@@ -7,15 +7,15 @@ import { gsap, SplitWords, useGsap } from './ui/motion';
 import { profile } from '@/data/content';
 
 const FLOATERS = [
-  { label: '{ }', cls: 'left-[2%] top-[14%]', t: '6s', mono: true },
-  { label: 'OAuth 2.0', cls: 'right-[-2%] top-[10%]', t: '7.5s' },
+  { label: '</>', cls: 'left-[2%] top-[14%]', t: '6s', mono: true },
+  { label: 'React', cls: 'right-[-2%] top-[10%]', t: '7.5s' },
   { label: 'Next.js', cls: 'left-[-6%] top-[52%]', t: '8s' },
-  { label: '200 OK', cls: 'right-[-4%] top-[46%]', t: '6.5s', mono: true, good: true },
-  { label: 'Webhooks', cls: 'left-[8%] bottom-[8%]', t: '9s' },
-  { label: 'Node.js', cls: 'right-[6%] bottom-[14%]', t: '7s' },
+  { label: 'deploy ✓', cls: 'right-[-4%] top-[46%]', t: '6.5s', mono: true, good: true },
+  { label: 'PostgreSQL', cls: 'left-[8%] bottom-[8%]', t: '9s' },
+  { label: 'Automations', cls: 'right-[4%] bottom-[14%]', t: '7s' },
 ];
 
-const STRIP = ['Next.js', 'Node.js', 'React', 'TypeScript', 'OAuth 2.0', 'Webhooks', 'REST APIs', 'PostgreSQL', 'Prisma', 'Gemini API', 'Redux Toolkit', 'Tailwind CSS'];
+const STRIP = ['React', 'Next.js', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind CSS', 'Redux Toolkit', 'Automations', 'Gemini API', 'Jest'];
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
@@ -65,7 +65,7 @@ export default function Hero() {
         <div className="lg:col-span-7">
           <p data-hero-eyebrow className="inline-flex items-center gap-2 rounded-full border border-line bg-paper/70 py-1.5 pl-2 pr-3.5 text-sm">
             <span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-60 motion-reduce:animate-none" /><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-600" /></span>
-            {profile.availability}
+            Full-stack developer · {profile.location}
           </p>
           <h1 data-hero-title className="mt-6 font-display text-[2.9rem] font-semibold leading-[0.98] tracking-[-0.035em] sm:text-7xl xl:text-[5.4rem]">
             <SplitWords text={profile.hero.hello} />
@@ -81,7 +81,7 @@ export default function Hero() {
           </div>
           <dl data-hero-fade className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted">
             <div className="flex items-center gap-2"><dt className="sr-only">Location</dt><MapPin size={16} /><dd>{profile.location}</dd></div>
-            <div className="flex items-center gap-2"><dt className="sr-only">Current role</dt><dd><span className="text-ink">{profile.title.split(' at ')[0]}</span> at viaSocket</dd></div>
+            <div className="flex items-center gap-2"><dt className="sr-only">Current role</dt><dd>Currently building at <span className="text-ink">viaSocket</span></dd></div>
           </dl>
         </div>
 

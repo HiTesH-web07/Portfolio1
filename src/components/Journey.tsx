@@ -33,7 +33,7 @@ export default function Journey() {
   return (
     <section id="journey" ref={root} aria-labelledby="journey-title" className="relative py-24 sm:py-32">
       <div className="wrap">
-        <SectionHead id="journey-title" eyebrow="01 · My journey" title="The journey" accent="so far..." intro="From a curious first-year student to an engineer shipping integrations used across a large automation platform. Five chapters, told honestly." />
+        <SectionHead id="journey-title" eyebrow="01 · My journey" title="The journey" accent="so far..." intro="From the first day of college to a full-stack role at a SaaS company: late nights, first pull requests, and products built end to end." />
 
         <div className="mt-16 grid gap-10 lg:grid-cols-12">
           {/* sticky avatar stage, desktop */}
