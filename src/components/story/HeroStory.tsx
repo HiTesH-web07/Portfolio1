@@ -42,10 +42,10 @@ export default function HeroStory() {
   });
 
   return (
-    <section id="top" ref={root} className="relative overflow-hidden pb-16 pt-28 sm:pt-32">
+    <section id="top" ref={root} className="relative overflow-x-clip pb-4 pt-28 sm:pt-32">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="drift absolute -right-48 -top-48 h-[38rem] w-[38rem] rounded-full bg-sage/80 blur-3xl" style={{ ['--t' as string]: '16s' }} />
-        <div className="drift absolute -left-40 bottom-0 h-[24rem] w-[24rem] rounded-full bg-clay/40 blur-3xl" style={{ ['--t' as string]: '20s' }} />
+        <div className="drift absolute -left-40 bottom-[20%] h-[22rem] w-[22rem] rounded-full bg-clay/30 blur-3xl" style={{ ['--t' as string]: '20s' }} />
       </div>
 
       <div className="wrap grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
@@ -88,14 +88,14 @@ export default function HeroStory() {
         </div>
       </div>
 
-      <dl data-fade className="wrap mt-20 grid gap-6 border-t border-line pt-8 sm:grid-cols-3">
+      <dl data-fade className="wrap mt-14 grid gap-6 border-t border-line pt-8 sm:grid-cols-3">
         {heroStory.facts.map((f) => (
           <div key={f.k}><dt className="eyebrow">{f.k}</dt><dd className="mt-2 font-display text-lg">{f.v}</dd></div>
         ))}
       </dl>
-      <a href="#journey" data-fade className="group mx-auto mt-14 flex w-max flex-col items-center gap-3 text-sm text-muted transition-colors hover:text-ink">
+      <a href="#journey" data-fade className="group mx-auto mt-10 flex w-max flex-col items-center gap-2 text-sm text-muted transition-colors hover:text-ink">
         <span className="font-serif text-lg italic">Read my story</span>
-        <span aria-hidden className="relative block h-16 w-px overflow-hidden bg-line"><span className="thread-dot absolute left-0 top-0 h-6 w-px bg-ink" /></span>
+        <span aria-hidden className="relative block h-12 w-px overflow-hidden bg-line"><span className="thread-dot absolute left-0 top-0 h-6 w-px bg-ink" /></span>
       </a>
     </section>
   );

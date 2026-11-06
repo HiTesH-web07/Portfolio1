@@ -132,7 +132,7 @@ export default function JourneyStory() {
 
   const cur = chapters[active];
   return (
-    <section id="journey" ref={root} aria-labelledby="journey-title" className="relative pb-12 pt-20 sm:pb-16 sm:pt-24">
+    <section id="journey" ref={root} aria-labelledby="journey-title" className="relative pb-12 pt-8 sm:pb-16 sm:pt-10">
       {/* the whole chapter area takes on a soft tint of the current chapter */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-[0.22] transition-colors duration-[1200ms] dark:opacity-[0.08]" style={{ background: `linear-gradient(180deg, transparent 0%, ${TONE[cur.tone].tint} 18%, ${TONE[cur.tone].tint} 82%, transparent 100%)` }} />
       <div className="wrap">
