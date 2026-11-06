@@ -482,7 +482,7 @@ export type Step = {
   id: string; numeral: string; kind: 'Education' | 'Employment' | 'Independent' | 'Exploring'; when: string; title: string;
   did: string; learned: string; evidence: string[]; next?: string;
   pose: Pose; expression: 'smile' | 'joy' | 'focus' | 'puzzled' | 'curious' | 'calm';
-  tone: 'cream' | 'sage' | 'forest' | 'clay' | 'ink'; artifact: 'notebook' | 'kulies' | 'workflow' | 'products' | 'ai';
+  tone: 'cream' | 'sage' | 'forest' | 'clay' | 'ink'; artifact: 'notebook' | 'kulies' | 'workflow' | 'products' | 'ai' | 'education';
 };
 
 export const steps: Step[] = [
@@ -586,6 +586,7 @@ export const v3nav = [
   { id: 'experience', label: 'Experience' },
   { id: 'work', label: 'Work' },
   { id: 'beyond', label: 'Beyond' },
+  { id: 'skills', label: 'Skills' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -614,3 +615,39 @@ export const problemSolving = {
   text: 'I regularly practise Data Structures and Algorithms and solve coding challenges on LeetCode. I enjoy breaking down complex problems, exploring different approaches and finding efficient solutions.',
   tags: ['Data Structures & Algorithms', 'LeetCode', 'C++'],
 };
+
+// ---------- Journey (final): four sticky chapters; education and certifications live in chapter I ----------
+export const journeyFinal: Step[] = [
+  {
+    id: 'college', numeral: 'I', kind: 'Education', when: '2022 – 2026 · B.Tech CSE, Medi-Caps University, Indore', tone: 'cream', artifact: 'education', pose: 'wave', expression: 'smile',
+    title: 'Where curiosity turned into code',
+    did: 'I started with C and C++, then spent most of my practice on data structures and algorithms. Later I moved to the web, building small React and Next.js apps, and graduated with a CGPA of 7.92.',
+    learned: 'To break a problem into steps before writing code.',
+    evidence: ['CGPA 7.92', 'C / C++', 'DSA', 'React', 'Next.js'],
+    next: 'Next, I wanted to see how software is built inside a real team.',
+  },
+  {
+    id: 'thinkdebug', numeral: 'II', kind: 'Employment', when: 'Feb – Apr 2025 · Frontend Developer Intern, Think Debug (on-site)', tone: 'sage', artifact: 'kulies', pose: 'laptop', expression: 'focus',
+    title: 'My first taste of real product engineering',
+    did: 'I worked on Kulies, a B2B2C e-commerce app, in a six-engineer team shipping every week with code reviews: product listing, cart, wishlist and real-time pricing.',
+    learned: 'To write components others can reuse, and to measure before optimising.',
+    evidence: ['React', 'Redux Toolkit', 'Tailwind CSS', 'Weekly sprints'],
+    next: 'Calling APIs from the frontend made me want to understand what happens behind them.',
+  },
+  {
+    id: 'viasocket', numeral: 'III', kind: 'Employment', when: 'May 2026 – now · Integration Solution Engineer, viaSocket (on-site)', tone: 'forest', artifact: 'workflow', pose: 'think', expression: 'focus',
+    title: 'Understanding systems beyond the UI',
+    did: 'On viaSocket, a no-code AI automation platform, I work on product development and integrations: modules that connect it to third-party APIs, workflow automations and the UI to configure them.',
+    learned: 'How systems talk to each other: OAuth, webhooks, pagination, and debugging live APIs.',
+    evidence: ['Next.js', 'Node.js', 'Integrations', 'Automation'],
+    next: 'Seeing how much work automation removes, I started building for problems I noticed.',
+  },
+  {
+    id: 'products', numeral: 'IV', kind: 'Independent', when: 'Independent projects', tone: 'clay', artifact: 'products', pose: 'celebrate', expression: 'joy',
+    title: 'From identifying problems to building products',
+    did: 'I build products end to end for gaps I notice: SENSAI, an AI career coach; Meeting-to-Action Closer, which turns meetings into tasks; and Cairn, which measures the value of work.',
+    learned: 'To own the whole product: data model, API, UI, tests and deployment.',
+    evidence: ['SENSAI', 'Meeting-to-Action Closer', 'Cairn', 'Gemini API'],
+    next: "Here's what I built.",
+  },
+];

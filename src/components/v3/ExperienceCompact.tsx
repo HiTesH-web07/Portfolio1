@@ -1,10 +1,10 @@
 'use client';
 import { useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Briefcase, ChevronDown, Users, Award, GraduationCap } from 'lucide-react';
+import { Briefcase, ChevronDown, Users } from 'lucide-react';
 import { gsap, SectionHead, revealSection, useGsap } from '../ui/motion';
 import { COMPANIES, LAYER } from '../story/ExperienceStory';
-import { experience, certifications, education } from '@/data/content';
+import { experience } from '@/data/content';
 
 const fmt = (n: number) => n.toLocaleString('en-US');
 
@@ -64,21 +64,6 @@ export default function ExperienceCompact() {
         <SectionHead id="exp-title" eyebrow="02 · Experience" title="Where I've been" accent="building." />
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {COMPANIES.map((co, i) => <CompanyCard key={co.id} co={co} points={experience[i].points} dark={i === 0} />)}
-        </div>
-        <div data-co className="mt-6 grid gap-4 rounded-[2rem] border border-line bg-paper p-6 sm:p-8 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-4">
-            <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-muted"><GraduationCap size={14} />Education</p>
-            <p className="mt-2 font-medium">{education[0].degree}</p>
-            <p className="text-sm text-muted">{education[0].school} · {education[0].when} · {education[0].note.split(' · ')[0]}</p>
-          </div>
-          <div className="lg:col-span-8">
-            <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.16em] text-muted"><Award size={14} />Certifications</p>
-            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-              {certifications.map((c) => (
-                <li key={c.name} className="flex items-center justify-between gap-3 rounded-2xl border border-line bg-bg px-4 py-3"><span className="flex items-center gap-2 font-medium"><Award size={15} className="text-[#B4462F] dark:text-[#E8C6B8]" />{c.name}</span><span className="font-mono text-xs text-muted">{c.year}</span></li>
-              ))}
-            </ul>
-          </div>
         </div>
       </div>
     </section>

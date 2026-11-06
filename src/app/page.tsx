@@ -3,10 +3,11 @@ import Nav from '@/components/Nav';
 import { ChatProvider } from '@/components/chat/ChatContext';
 import ChatPanel from '@/components/chat/ChatPanel';
 import HeroA from '@/components/v3/HeroA';
-import JourneyCompact from '@/components/v3/JourneyCompact';
+import JourneyFinal from '@/components/v3/JourneyFinal';
 import ExperienceCompact from '@/components/v3/ExperienceCompact';
-import SelectedWork from '@/components/v3/SelectedWork';
+import WorkBands from '@/components/v3/WorkBands';
 import BeyondBuild from '@/components/v3/BeyondBuild';
+import SkillsCompact from '@/components/v3/SkillsCompact';
 import AskHitesh from '@/components/AskHitesh';
 import Contact from '@/components/Contact';
 import { v3nav } from '@/data/content';
@@ -18,12 +19,13 @@ export default function Page() {
       <Nav items={v3nav} />
       <main id="main">
         <HeroA />
-        <JourneyCompact />
+        <JourneyFinal />
         <ExperienceCompact />
-        <SelectedWork />
+        <WorkBands />
         <BeyondBuild />
-        <AskHitesh num="05" />
-        <Contact num="06" />
+        <SkillsCompact />
+        <AskHitesh num="06" />
+        <Contact num="07" />
       </main>
       <ChatPanel />
     </ChatProvider>

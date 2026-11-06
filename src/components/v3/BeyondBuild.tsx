@@ -67,7 +67,7 @@ function ProblemSolving() {
         <div className="overflow-hidden rounded-2xl bg-[#24231F] font-mono text-[11.5px] leading-6 text-[#E8E2D2] shadow-lift">
           <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-2"><span className="h-2 w-2 rounded-full bg-[#E5A090]" /><span className="h-2 w-2 rounded-full bg-[#E3C77A]" /><span className="h-2 w-2 rounded-full bg-[#9DB2A1]" /><span className="ml-2 text-[10px] text-white/50">solution.cpp</span></div>
           <div className="px-3 py-2.5">
-            <p className="text-white/40 line-through decoration-white/30">{'// approach 1: two loops, O(n²)'}</p>
+            <p className="text-white/60 line-through decoration-white/40">{'// approach 1: two loops, O(n²)'}</p>
             <p className="text-[#E3C77A]">{'// approach 2: hash map, O(n)'}</p>
             <p>{'unordered_map<int, int> seen;'}</p>
             <p>{'for (int i = 0; i < n; ++i) {'}</p>
