@@ -12,7 +12,7 @@ type Company = { id: string; mark: React.ReactNode; company: string; role: strin
 // Every figure below comes from the master resume.
 export const COMPANIES: Company[] = [
   {
-    id: 'viasocket', company: 'Walkover Web Solution', role: 'Integration Solution Engineer', when: 'May 2026 – Present', where: 'Indore, India (Remote)', pose: 'think',
+    id: 'viasocket', company: 'Walkover Web Solution', role: 'Integration Solution Engineer', when: 'May 2026 – Present', where: 'Indore, India (On-site)', pose: 'think',
     mark: <>via<span className="text-[#B4462F] dark:text-[#E8C6B8]">Socket</span></>,
     context: ['Platform scale: 100,000+ users', '2,200+ connected SaaS apps'],
     items: [
@@ -24,7 +24,7 @@ export const COMPANIES: Company[] = [
     stack: ['Next.js', 'React', 'Node.js', 'OAuth 2.0', 'Webhooks', 'Postman'],
   },
   {
-    id: 'thinkdebug', company: 'Think Debug', role: 'Frontend Developer Intern · Kulies', when: 'Feb 2025 – Apr 2025', where: 'Indore, India', pose: 'laptop',
+    id: 'thinkdebug', company: 'Think Debug', role: 'Frontend Developer Intern · Kulies', when: 'Feb 2025 – Apr 2025', where: 'Indore, India (On-site)', pose: 'laptop',
     mark: <>Think<span className="text-[#B4462F] dark:text-[#E8C6B8]">.</span>Debug</>,
     context: ['Six-engineer Agile team', 'Weekly sprints, code reviews'],
     items: [

@@ -92,3 +92,6 @@
 @keyframes ai-pulse { 50% { transform: scale(1.06); } }
 .ai-pulse { animation: ai-pulse 2.4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .ai-pulse { animation: none; } }
+@keyframes pipe { from { left: 0%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } to { left: 100%; opacity: 0; } }
+.pipe-dot { animation: pipe 4s cubic-bezier(.65,0,.35,1) infinite; }
+@media (prefers-reduced-motion: reduce) { .pipe-dot { display: none; } }

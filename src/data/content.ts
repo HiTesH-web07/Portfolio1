@@ -78,7 +78,7 @@ export const experience = [
     product: 'viaSocket',
     role: 'Integration Solution Engineer',
     when: 'May 2026 – Present',
-    where: 'Indore, India (Remote)',
+    where: 'Indore, India (On-site)',
     summary:
       'I build and ship features across the full stack of viaSocket, a no-code AI automation platform: React and Next.js on the front, Node.js on the back. And I automate things, building multi-step workflows that connect apps so people stop doing repetitive work.',
     stats: [
@@ -103,7 +103,7 @@ export const experience = [
     product: 'Kulies',
     role: 'Frontend Developer Intern',
     when: 'Feb 2025 – Apr 2025',
-    where: 'Indore, India',
+    where: 'Indore, India (On-site)',
     summary:
       'I worked on Kulies, a B2B2C e-commerce application, delivering features on weekly sprint deadlines in a six-engineer Agile team.',
     stats: [
@@ -588,3 +588,23 @@ export const v3nav = [
   { id: 'beyond', label: 'Beyond' },
   { id: 'contact', label: 'Contact' },
 ];
+
+// ---------- Hero v4 (preview): identity-first headline ----------
+export const heroV4 = {
+  role: 'Full-Stack Developer',
+  headline: 'I build products and the systems behind them.',
+  description: "I'm a full-stack developer working with React, Next.js and Node.js to build web applications, integrate APIs and develop workflow automation solutions. Currently working on product development and integrations at viaSocket.",
+  proof: [
+    { n: '100+', l: 'integration modules' },
+    { n: '3', l: 'independent products' },
+    { n: '74', l: 'automated tests' },
+  ],
+  // the system I build, layer by layer (each tied to real work)
+  system: [
+    { k: 'Interface', v: 'React · Next.js', where: 'viaSocket, Meeting-to-Action Closer, Kulies' },
+    { k: 'API', v: 'Node.js · REST', where: 'viaSocket integrations, every product I build' },
+    { k: 'Data', v: 'PostgreSQL', where: 'SENSAI, Meeting-to-Action Closer (Prisma)' },
+    { k: 'Automation', v: 'Webhooks · workflows', where: 'Multi-step workflows at viaSocket' },
+    { k: 'AI', v: 'Gemini API', where: 'SENSAI, Ask Cairn, Ask Hitesh' },
+  ],
+};
