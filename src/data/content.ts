@@ -39,7 +39,7 @@ export const journey: { id: string; when: string; title: string; body: string; p
     id: 'huddles',
     when: 'College years',
     title: 'Late-night huddles, loud ideas.',
-    body: 'The best lessons happened after class: late-night huddles with friends, ideas sketched on whatever was nearby, and "one more bug" turning into sunrise. I learned the full stack by shipping, from React screens to Node.js APIs to PostgreSQL tables, and built SENSAI, an AI career coach on the Gemini API.',
+    body: 'The best lessons happened after class: late-night huddles with friends, ideas sketched on whatever was nearby, and debugging sessions that ran past midnight. I learned the full stack by shipping, from React screens to Node.js APIs to PostgreSQL tables, and built SENSAI, an AI career coach on the Gemini API.',
     pose: 'explore',
     tags: ['React', 'Node.js', 'PostgreSQL', 'Gemini API'],
   },
