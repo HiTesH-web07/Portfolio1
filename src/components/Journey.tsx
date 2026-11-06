@@ -31,7 +31,7 @@ export default function Journey() {
 
   const cur = journey[active];
   return (
-    <section id="journey" ref={root} aria-labelledby="journey-title" className="relative py-24 sm:py-32">
+    <section id="journey" ref={root} aria-labelledby="journey-title" className="relative py-20 sm:py-24">
       <div className="wrap">
         <SectionHead id="journey-title" eyebrow="01 · My journey" title="The journey" accent="so far..." intro="From the first day of college to a full-stack role at a SaaS company: late nights, first pull requests, and products built end to end." />
 

@@ -392,12 +392,13 @@ export const chapters: Chapter[] = [
     id: 'student', numeral: 'I', kind: 'Education', when: '2022 – 2026 · B.Tech CSE, Medi-Caps University', tone: 'cream', artifact: 'notebook', pose: 'explore', expression: 'curious',
     title: 'The curious student',
     body: [
-      "I didn't start with a plan. I started with a question that wouldn't leave me alone: how does software actually work? I went looking for the answer in C, C++ and a lot of data structures.",
-      'The real classroom opened after class. Late-night huddles with friends, half-finished ideas, debugging sessions that ran past midnight. That is where I learned the full stack, from React screens to Node.js APIs to PostgreSQL tables, and built SENSAI, an AI career coach on the Gemini API.',
+      "I didn't start with a plan. I started with a question that wouldn't leave me alone: how does software actually work?",
+      'Then I found the puzzles. Late nights went into DSA problems in C and C++: dynamic programming, graphs with BFS and Dijkstra, binary search, backtracking, bitmask DP. Most problems beat me the first time. So I learned to slow down: break the problem into smaller ones, question my first idea, prove it on paper, and try again until the solution was clean.',
+      'Late-night huddles with friends turned that habit into real software: React apps, Node.js APIs, PostgreSQL tables, and SENSAI, an AI career coach on the Gemini API.',
     ],
-    lesson: "You don't really understand something until you've built it.",
-    bridge: 'Curiosity got me building. Next, I needed to learn how real teams ship.',
-    tags: ['C / C++', 'DSA', 'React', 'Node.js', 'SENSAI'],
+    lesson: "Every hard problem is a few small ones I haven't found yet.",
+    bridge: 'Puzzles taught me to think. Next, I needed to learn how real teams ship.',
+    tags: ['DSA in C / C++', 'Dynamic programming', 'Graphs', 'Problem solving', 'SENSAI'],
   },
   {
     id: 'thinkdebug', numeral: 'II', kind: 'Employment', when: 'Feb – Apr 2025 · Frontend Developer Intern, Think Debug', tone: 'sage', artifact: 'kulies', pose: 'laptop', expression: 'focus',

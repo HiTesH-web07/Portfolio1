@@ -30,7 +30,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" ref={root} aria-labelledby="contact-title" className="relative overflow-hidden bg-[#24231F] pb-10 pt-24 text-[#F1EBDD] sm:pt-32">
+    <section id="contact" ref={root} aria-labelledby="contact-title" className="relative overflow-hidden bg-[#24231F] pb-10 pt-20 text-[#F1EBDD] sm:pt-24">
       <div aria-hidden className="absolute -right-32 top-10 h-96 w-96 rounded-full bg-[#2D3A2E] blur-2xl" />
       <div className="wrap relative grid gap-12 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-7">

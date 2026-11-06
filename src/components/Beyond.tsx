@@ -38,7 +38,7 @@ export default function Beyond() {
     gsap.from('[data-tile]', { y: 60, rotate: (i) => (i % 2 ? 6 : -6), opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08, scrollTrigger: { trigger: '[data-collage]', start: 'top 80%', once: true } });
   });
   return (
-    <section id="beyond" ref={root} aria-labelledby="beyond-title" className="py-24 sm:py-32">
+    <section id="beyond" ref={root} aria-labelledby="beyond-title" className="py-20 sm:py-24">
       <div className="wrap">
         <SectionHead id="beyond-title" eyebrow="07 · Beyond the code" title="A little more" accent="about me." />
         <ul data-collage className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-2">

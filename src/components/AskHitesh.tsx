@@ -11,7 +11,7 @@ export default function AskHitesh() {
   useGsap(root, () => revealSection(root.current));
 
   return (
-    <section id="ask" ref={root} aria-labelledby="ask-title" className="relative overflow-hidden bg-[#2D3A2E] py-24 text-[#F1EBDD] sm:py-32">
+    <section id="ask" ref={root} aria-labelledby="ask-title" className="relative overflow-hidden bg-[#2D3A2E] py-20 text-[#F1EBDD] sm:py-24">
       <div aria-hidden className="absolute -left-24 top-24 h-80 w-80 rounded-full bg-[#3E5040] blur-2xl" />
       <div className="wrap relative grid gap-12 lg:grid-cols-12">
         <div className="min-w-0 lg:col-span-5">

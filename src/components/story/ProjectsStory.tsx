@@ -75,7 +75,7 @@ export default function ProjectsStory() {
   const rest = projects.slice(2);
 
   return (
-    <section id="work" ref={root} aria-labelledby="work-title" className="pt-24 sm:pt-32">
+    <section id="work" ref={root} aria-labelledby="work-title" className="pt-20 sm:pt-24">
       <div className="wrap">
         <SectionHead id="work-title" eyebrow="03 · Projects" title="I noticed a gap," accent="so I built." intro="Case studies of products I designed, built and shipped. Independent, personal and work projects are labelled, so it is always clear what was mine to build." />
       </div>

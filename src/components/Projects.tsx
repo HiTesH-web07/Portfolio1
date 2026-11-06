@@ -141,7 +141,7 @@ export default function Projects() {
   const rest = projects.slice(2);
 
   return (
-    <section id="work" ref={root} aria-labelledby="work-title" className="py-24 sm:py-32">
+    <section id="work" ref={root} aria-labelledby="work-title" className="py-20 sm:py-24">
       <div className="wrap">
         <SectionHead id="work-title" eyebrow="03 · Featured projects" title="Things I've brought" accent="to life." intro="Products I designed, built and shipped end to end: frontend, backend, database, tests and AI. Open any project for the full case study." />
 

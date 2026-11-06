@@ -62,7 +62,7 @@ export default function ExperienceStory() {
   });
 
   return (
-    <section id="experience" ref={root} aria-labelledby="exp-title" className="bg-paper py-24 sm:py-32">
+    <section id="experience" ref={root} aria-labelledby="exp-title" className="bg-paper py-20 sm:py-24">
       <div className="wrap">
         <SectionHead id="exp-title" eyebrow="02 · Experience" title="Where I've been" accent="building." intro="The measurable side of the story: what I shipped at each company, sorted by the layer of the stack it touched." />
 

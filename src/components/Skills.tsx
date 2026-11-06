@@ -11,7 +11,7 @@ export default function Skills() {
   const root = useRef<HTMLElement>(null);
   useGsap(root, () => revealSection(root.current));
   return (
-    <section id="skills" ref={root} aria-labelledby="skills-title" className="py-24 sm:py-32">
+    <section id="skills" ref={root} aria-labelledby="skills-title" className="py-20 sm:py-24">
       <div className="wrap">
         <SectionHead id="skills-title" eyebrow="06 · Skills" title="My technical" accent="toolbox." intro="What I reach for, grouped the way I use it. No made-up percentages: the projects above are the proof." />
 

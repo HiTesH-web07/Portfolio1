@@ -69,7 +69,7 @@ export default function Experience() {
   const [via, td] = experience;
 
   return (
-    <section id="experience" ref={root} aria-labelledby="exp-title" className="py-24 sm:py-32">
+    <section id="experience" ref={root} aria-labelledby="exp-title" className="py-20 sm:py-24">
       <div className="wrap">
         <SectionHead id="exp-title" eyebrow="02 · Experience" title="Where I've been" accent="building." />
 

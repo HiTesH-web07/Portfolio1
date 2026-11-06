@@ -29,10 +29,16 @@ function KindBadge({ kind }: { kind: Chapter['kind'] }) {
 
 function Artifact({ kind }: { kind: Chapter['artifact'] }) {
   if (kind === 'notebook') return (
-    <div className="relative w-56 rotate-2 rounded-2xl border border-[#E2D9C6] bg-[#FFFDF8] p-4 font-mono text-[12px] leading-6 text-[#24231F] shadow-lift" style={{ backgroundImage: 'repeating-linear-gradient(transparent 0 23px, #EDE5D3 23px 24px)' }}>
-      <p className="text-[#8A6A1F]">#include &lt;stdio.h&gt;</p><p>int main() {'{'}</p><p className="pl-4">printf(<span className="text-[#B4462F]">&quot;Hello, World&quot;</span>);</p><p className="pl-4">return 0;</p><p>{'}'}</p>
-      <span className="absolute -right-6 -top-5 rotate-6 rounded-md bg-[#E8C6B8] px-3 py-2 font-sans text-xs font-medium shadow-soft">DSA: graphs, DP</span>
-      <span className="absolute -bottom-4 -left-5 -rotate-6 rounded-md bg-[#D9E4DC] px-3 py-2 font-sans text-xs font-medium shadow-soft">late-night ideas</span>
+    <div className="relative w-[17.5rem] rotate-2 rounded-2xl border border-[#E2D9C6] bg-[#FFFDF8] p-4 font-mono text-[11.5px] leading-6 text-[#24231F] shadow-lift" style={{ backgroundImage: 'repeating-linear-gradient(transparent 0 23px, #EDE5D3 23px 24px)' }}>
+      <p className="text-[#8A6A1F]">{'// shortest path, take 3'}</p>
+      <p>{'while (!pq.empty()) {'}</p>
+      <p className="pl-3">{'auto [d, u] = pq.top(); pq.pop();'}</p>
+      <p className="pl-3">{'if (d > dist[u]) continue;'}</p>
+      <p className="pl-3">{'for (auto [v, w] : adj[u])'}</p>
+      <p className="pl-6">{'relax(u, v, w);'}</p>
+      <p>{'}'}</p>
+      <span className="absolute -right-7 -top-5 rotate-6 rounded-md bg-[#E8C6B8] px-3 py-2 font-sans text-xs font-medium shadow-soft">break it down first</span>
+      <span className="absolute -bottom-5 -left-6 -rotate-6 rounded-md bg-[#D9E4DC] px-3 py-2 font-sans text-xs font-medium shadow-soft">1 a.m. · finally clean ✓</span>
     </div>
   );
   if (kind === 'kulies') return (
@@ -105,7 +111,7 @@ export default function JourneyStory() {
 
   useEffect(() => {
     const els = Array.from(root.current?.querySelectorAll<HTMLElement>('[data-chapter]') ?? []);
-    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) setActive(els.indexOf(e.target as HTMLElement)); }), { rootMargin: '-45% 0px -50% 0px' });
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) setActive(els.indexOf(e.target as HTMLElement)); }), { rootMargin: '-40% 0px -45% 0px' });
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
@@ -126,7 +132,7 @@ export default function JourneyStory() {
 
   const cur = chapters[active];
   return (
-    <section id="journey" ref={root} aria-labelledby="journey-title" className="relative py-24 sm:py-32">
+    <section id="journey" ref={root} aria-labelledby="journey-title" className="relative pb-12 pt-20 sm:pb-16 sm:pt-24">
       {/* the whole chapter area takes on a soft tint of the current chapter */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-[0.22] transition-colors duration-[1200ms] dark:opacity-[0.08]" style={{ background: `linear-gradient(180deg, transparent 0%, ${TONE[cur.tone].tint} 18%, ${TONE[cur.tone].tint} 82%, transparent 100%)` }} />
       <div className="wrap">
@@ -142,7 +148,7 @@ export default function JourneyStory() {
             {chapters.map((c, i) => (
               <li key={c.id} data-chapter className={`relative pb-6 pl-10 transition-opacity duration-700 lg:pl-0 ${i === active ? 'lg:opacity-100' : 'lg:opacity-40'}`}>
                 <span aria-hidden className={`absolute left-0 top-12 grid h-6 w-6 place-items-center rounded-full border-2 transition-colors duration-500 lg:-left-[36px] lg:top-[calc(50%-12px)] ${i <= active ? 'border-ink bg-ink' : 'border-line bg-bg'}`}><span className={`h-1.5 w-1.5 rounded-full ${i <= active ? 'bg-bg' : 'bg-line'}`} /></span>
-                <div className="flex flex-col justify-center py-10 lg:min-h-[78vh]">
+                <div className={`flex flex-col justify-center py-10 ${i === chapters.length - 1 ? 'lg:min-h-[60vh] lg:pb-0' : 'lg:min-h-[72vh]'}`}>
                   <div className="mb-6 h-80 sm:h-96 lg:hidden"><Stage c={c} index={i} total={chapters.length} /></div>
                   <div data-meta className="flex flex-wrap items-center gap-3"><KindBadge kind={c.kind} /><span className="font-mono text-sm text-muted">{c.when}</span></div>
                   <h3 className="mt-4 text-4xl font-semibold leading-[1.05] sm:text-5xl"><span className="mr-3 font-serif font-normal italic text-[#B4462F] dark:text-[#E8C6B8]">{c.numeral}.</span><SplitWords text={c.title} /></h3>

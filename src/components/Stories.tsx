@@ -40,7 +40,7 @@ export default function Stories() {
   const step = s.steps[st.key];
 
   return (
-    <section id="stories" ref={root} aria-labelledby="stories-title" className="bg-sage/60 py-24 sm:py-32">
+    <section id="stories" ref={root} aria-labelledby="stories-title" className="bg-sage/60 py-20 sm:py-24">
       <div className="wrap">
         <SectionHead id="stories-title" eyebrow="04 · Engineering stories" title="Things don't always work on the" accent="first try." intro="Real problems from across the stack: a slow interface, a database that must never double-write, and an automation that will not authenticate. The process is the same every time." />
       </div>
