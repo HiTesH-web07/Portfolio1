@@ -5,7 +5,7 @@ import { AlertTriangle, Search, CheckCircle2, ArrowUpRight, Check, FlaskConical,
 import Avatar from '../avatar/Avatar';
 import { Artifact } from '../story/JourneyNext';
 import { gsap, SectionHead, revealSection, useGsap } from '../ui/motion';
-import { stories, exploring, fundamentals, caseStudies, projects, type TechItem } from '@/data/content';
+import { stories, exploring, caseStudies, projects, problemSolving, type TechItem } from '@/data/content';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const STAGES = [
@@ -45,7 +45,8 @@ function Debugging() {
             <motion.li key={st.key} variants={{ h: { opacity: 0, y: 12 }, s: { opacity: 1, y: 0 } }} transition={{ duration: 0.4, ease }} className="rounded-2xl border border-line bg-bg p-4">
               <p className={`flex items-center gap-1.5 text-xs font-medium ${st.cls}`}><st.icon size={13} />{st.label}</p>
               <p className="mt-2 font-medium leading-snug">{step.title}</p>
-              <p className="mt-2 font-mono text-[11px] leading-5 text-muted">{step.code[step.code.length - 1]}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{step.body}</p>
+              <p className="mt-3 font-mono text-[11px] leading-5 text-muted">{step.code[step.code.length - 1]}</p>
             </motion.li>
           ); })}
         </motion.ol>
@@ -57,10 +58,26 @@ function Debugging() {
 function ProblemSolving() {
   return (
     <Tile className="relative overflow-hidden bg-[#D9E4DC] text-[#24231F] lg:col-span-5">
-      <TileHead tone="text-[#45524A]" icon={Puzzle} kicker="Problem solving" title="DSA taught me to think before I type." />
-      <p className="relative z-10 mt-3 max-w-[18rem] leading-relaxed text-[#45524A]">Competitive programming in C and C++. Breaking a problem into smaller ones is still how I start every feature.</p>
-      <ul className="relative z-10 mt-4 flex max-w-[18rem] flex-wrap gap-1.5">{fundamentals.slice(0, 8).map((f) => <li key={f} className="rounded-full bg-white/60 px-2.5 py-0.5 text-xs">{f}</li>)}</ul>
-      <div className="absolute -bottom-2 -right-4 w-44 sm:w-52"><Avatar pose="think" float={false} title="Illustration of Hitesh thinking" /></div>
+      <TileHead tone="text-[#45524A]" icon={Puzzle} kicker="Problem solving" title={problemSolving.title} />
+      <p className="mt-3 leading-relaxed text-[#45524A]">{problemSolving.text}</p>
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        {problemSolving.tags.map((t) => <span key={t} className="rounded-full bg-white/70 px-3 py-1 text-sm">{t}</span>)}
+      </div>
+      <div className="relative mt-5 pr-16 sm:pr-20">
+        <div className="overflow-hidden rounded-2xl bg-[#24231F] font-mono text-[11.5px] leading-6 text-[#E8E2D2] shadow-lift">
+          <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-2"><span className="h-2 w-2 rounded-full bg-[#E5A090]" /><span className="h-2 w-2 rounded-full bg-[#E3C77A]" /><span className="h-2 w-2 rounded-full bg-[#9DB2A1]" /><span className="ml-2 text-[10px] text-white/50">solution.cpp</span></div>
+          <div className="px-3 py-2.5">
+            <p className="text-white/40 line-through decoration-white/30">{'// approach 1: two loops, O(n²)'}</p>
+            <p className="text-[#E3C77A]">{'// approach 2: hash map, O(n)'}</p>
+            <p>{'unordered_map<int, int> seen;'}</p>
+            <p>{'for (int i = 0; i < n; ++i) {'}</p>
+            <p className="pl-4">{'if (seen.count(t - a[i]))'}</p>
+            <p className="pl-8">{'return {seen[t - a[i]], i};'}</p>
+            <p className="pl-4">{'seen[a[i]] = i;'}<span className="caret ml-0.5 inline-block h-3.5 w-[6px] translate-y-0.5 bg-[#E8C6B8]" /> {'}'}</p>
+          </div>
+        </div>
+        <div className="absolute -bottom-8 -right-6 w-28 sm:-right-8 sm:w-32"><Avatar pose="think" float={false} title="Illustration of Hitesh thinking through a coding problem" /></div>
+      </div>
     </Tile>
   );
 }
@@ -126,6 +143,7 @@ export default function BeyondBuild() {
   });
   return (
     <section id="beyond" ref={root} aria-labelledby="beyond-title" className="py-20 sm:py-24">
+      <span id="stories" aria-hidden className="block scroll-mt-20" />
       <div className="wrap">
         <SectionHead id="beyond-title" eyebrow="04 · Beyond the build" title="How I" accent="think and work." />
         <div data-bento className="mt-12 grid gap-5 lg:grid-cols-12">

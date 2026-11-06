@@ -22,6 +22,7 @@ export function buildKnowledge(): string {
   lines.push(`\nCERTIFICATIONS: ${certifications.map((c) => `${c.name} (${c.year})`).join('; ')}`);
   lines.push(`EDUCATION: ${education.map((e) => `${e.degree}, ${e.school}, ${e.when}, ${e.note}`).join('; ')}`);
   lines.push(`JOURNEY: ${journey.map((j) => `${j.when}: ${j.title}. ${j.body}`).join(' ')}`);
+  lines.push('PROBLEM SOLVING: regularly practises Data Structures and Algorithms and solves coding challenges on LeetCode, mainly in C++.');
   lines.push(`INTERESTS: ${beyond.map((b) => b.title).join(', ')}`);
   lines.push(`ENGINEERING APPROACH: works across the full stack (React/Next.js UI, Node.js backend, database design, automation) and treats every layer as his responsibility; reads the request instead of guessing; inspects headers, credentials and API docs; replays calls against live endpoints; fixes the root cause; tests edge cases; reviews and tests every line of AI-assisted code before handoff; writes documentation.`);
   return lines.join('\n');

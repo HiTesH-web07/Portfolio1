@@ -608,3 +608,9 @@ export const heroV4 = {
     { k: 'AI', v: 'Gemini API', where: 'SENSAI, Ask Cairn, Ask Hitesh' },
   ],
 };
+
+export const problemSolving = {
+  title: 'I enjoy solving problems.',
+  text: 'I regularly practise Data Structures and Algorithms and solve coding challenges on LeetCode. I enjoy breaking down complex problems, exploring different approaches and finding efficient solutions.',
+  tags: ['Data Structures & Algorithms', 'LeetCode', 'C++'],
+};
