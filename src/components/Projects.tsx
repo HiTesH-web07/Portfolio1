@@ -91,7 +91,7 @@ function CaseStudy({ p, onClose }: { p: Project; onClose: () => void }) {
             </div>
           </div>
           <div className="mt-10 rounded-3xl border border-line bg-paper p-6">
-            <h4 className="eyebrow">Technical highlights</h4>
+            <h4 className="eyebrow">What I built</h4>
             <ul className="mt-4 grid gap-3">
               {p.highlights.map((h) => <li key={h} className="flex gap-3 leading-relaxed"><span aria-hidden className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-ink" />{h}</li>)}
             </ul>
