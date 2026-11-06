@@ -182,7 +182,7 @@ function Face({ expr, look }: { expr: Expression; look: { x: number; y: number }
             <path d="M147 156 C151 149 165 149 169 156" stroke={C.ink} strokeWidth={2.4} strokeLinecap="round" fill="none" />
             <path d="M191 156 C195 149 209 149 213 156" stroke={C.ink} strokeWidth={2.4} strokeLinecap="round" fill="none" />
             <clipPath id={eyeClip}><path d="M147 157 C151 149 165 149 169 157 C165 163 151 163 147 157 Z M191 157 C195 149 209 149 213 157 C209 163 195 163 191 157 Z" /></clipPath>
-            <g clipPath={`url(#${eyeClip})`}><g style={{ transform: `translate(${look.x * 0.7}px, ${look.y * 0.5}px)`, transition: 'transform .12s linear' }}>
+            <g clipPath={`url(#${eyeClip})`}><g style={{ transform: `translate(${look.x * 0.7}px, ${look.y * 0.5}px)`, transition: 'transform .45s cubic-bezier(.22,1,.36,1)' }}>
               <circle cx={158} cy={157} r={6.2} fill="#4A3122" />
               <circle cx={202} cy={157} r={6.2} fill="#4A3122" />
               <circle cx={158} cy={157} r={3.4} fill="#120D0A" />

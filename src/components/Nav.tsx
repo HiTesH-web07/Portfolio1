@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, Moon, Sun, X, MessageCircle } from 'lucide-react';
+import { Menu, Moon, Sun, X, MessageCircle, Download } from 'lucide-react';
 import { nav, profile } from '@/data/content';
 
 export function ThemeToggle() {
@@ -52,6 +52,7 @@ export default function Nav() {
         </ul>
         <div className="flex items-center gap-1">
           <ThemeToggle />
+          <a href={profile.resume} download aria-label="Download resume (PDF)" title="Download resume" className="hidden h-11 items-center gap-1.5 rounded-full px-3 text-[15px] text-muted transition-colors hover:bg-ink/5 hover:text-ink md:inline-flex"><Download size={17} /><span className="hidden xl:inline">Resume</span></a>
           <motion.a whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }} href="#ask" className="btn-primary hidden !min-h-[40px] !px-4 sm:inline-flex"><MessageCircle size={16} />Ask Hitesh</motion.a>
           <button className="grid h-11 w-11 place-items-center rounded-full lg:hidden" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}><Menu size={20} /></button>
         </div>
@@ -70,6 +71,7 @@ export default function Nav() {
                 </motion.li>
               ))}
             </ul>
+            <div className="wrap mt-8"><a href={profile.resume} download className="btn-primary w-full"><Download size={17} />Download resume</a></div>
           </motion.div>
         )}
       </AnimatePresence>

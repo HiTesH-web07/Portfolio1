@@ -1,6 +1,7 @@
 import Nav from '@/components/Nav';
-import Hero from '@/components/Hero';
-import Journey from '@/components/Journey';
+// Previous versions kept in components/Hero.tsx and components/Journey.tsx (git tag v1-before-story)
+import Hero from '@/components/story/HeroStory';
+import Journey from '@/components/story/JourneyStory';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import Stories from '@/components/Stories';

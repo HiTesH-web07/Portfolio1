@@ -23,7 +23,7 @@ export default function HeroStory() {
       raf = requestAnimationFrame(() => {
         const r = stage.current?.getBoundingClientRect(); if (!r) return;
         const dx = (e.clientX - (r.left + r.width / 2)) / (innerWidth / 2), dy = (e.clientY - (r.top + r.height * 0.35)) / (innerHeight / 2);
-        setLook({ x: Math.max(-1, Math.min(1, dx)) * 4, y: Math.max(-1, Math.min(1, dy)) * 3 });
+        setLook({ x: Math.round(Math.max(-1, Math.min(1, dx)) * 25) / 10, y: Math.round(Math.max(-1, Math.min(1, dy)) * 18) / 10 });
       });
     };
     addEventListener('pointermove', onMove, { passive: true });
@@ -53,9 +53,13 @@ export default function HeroStory() {
         <div className="lg:col-span-7">
           <div data-hi className="flex items-baseline gap-3">
             <span className="font-serif text-2xl italic text-muted">{heroStory.kicker}</span>
-            <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">{profile.name}<span className="text-[#B4462F]">.</span></h1>
+            <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">{profile.name}<span className="text-[#B4462F]">,</span></h1>
           </div>
-          <p className="mt-6 font-display text-[2.7rem] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-6xl xl:text-[4.6rem]" aria-label={heroStory.motto.map((m) => `${m.lead} ${m.rest}`).join(' ')}>
+          <p data-hi className="mt-3 max-w-2xl font-display text-xl leading-snug text-muted sm:text-2xl">
+            <span className="mr-2 inline-flex items-center gap-2 rounded-full bg-[#2D3A2E] px-3 py-1 align-middle text-base font-medium text-[#F1EBDD] sm:text-lg">{heroStory.role}</span>
+            {heroStory.roleLine}
+          </p>
+          <p className="mt-7 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.035em] sm:text-6xl xl:text-[4.2rem]" aria-label={heroStory.motto.map((m) => `${m.lead} ${m.rest}`).join(' ')}>
             {heroStory.motto.map((m, i) => (
               <span key={m.lead} data-line className="block" aria-hidden>
                 <SplitWords text={m.lead} className={`font-serif font-normal italic tracking-normal ${LEAD_COLOR[i]}`} />{' '}
@@ -63,13 +67,13 @@ export default function HeroStory() {
               </span>
             ))}
           </p>
-          <p data-fade className="mt-8 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">{heroStory.intro}</p>
-          <ul data-fade className="mt-6 flex flex-wrap gap-2" aria-label="Engineering interests">
+          <p data-fade className="mt-7 max-w-xl text-lg leading-relaxed text-muted">{heroStory.intro}</p>
+          <ul data-fade className="mt-5 flex flex-wrap gap-2" aria-label="Engineering interests">
             {heroStory.interests.map((t, i) => { const I = INTEREST_ICONS[i]; return (
               <li key={t} className="inline-flex items-center gap-2 rounded-full border border-line bg-paper/80 px-3.5 py-2 text-sm"><I size={15} className="text-[#B4462F] dark:text-[#E8C6B8]" />{t}</li>
             ); })}
           </ul>
-          <div data-fade className="mt-9 flex flex-wrap gap-3">
+          <div data-fade className="mt-8 flex flex-wrap gap-3">
             <motion.a whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} href="#work" className="btn-primary">Read the case studies <ArrowRight size={17} /></motion.a>
             <motion.a whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} href="#ask" className="btn-ghost"><MessageCircle size={17} />Ask Hitesh</motion.a>
             <motion.a whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} href={profile.resume} download className="btn-ghost"><Download size={17} />Resume</motion.a>
@@ -97,11 +101,15 @@ export default function HeroStory() {
         </div>
       </div>
 
-      <dl data-fade className="wrap mt-24 grid gap-6 border-t border-line pt-8 sm:grid-cols-3">
+      <dl data-fade className="wrap mt-20 grid gap-6 border-t border-line pt-8 sm:grid-cols-3">
         {heroStory.facts.map((f) => (
           <div key={f.k}><dt className="eyebrow">{f.k}</dt><dd className="mt-2 font-display text-lg">{f.v}</dd></div>
         ))}
       </dl>
+      <a href="#journey" data-fade className="group mx-auto mt-14 flex w-max flex-col items-center gap-3 text-sm text-muted transition-colors hover:text-ink">
+        <span className="font-serif text-lg italic">Read my story</span>
+        <span aria-hidden className="relative block h-16 w-px overflow-hidden bg-line"><span className="thread-dot absolute left-0 top-0 h-6 w-px bg-ink" /></span>
+      </a>
     </section>
   );
 }

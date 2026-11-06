@@ -86,3 +86,6 @@
 @keyframes flow { to { stroke-dashoffset: -16; } }
 .flow-dash { animation: flow 1s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .flow-dash { animation: none; } }
+@keyframes thread { from { transform: translateY(-100%); } to { transform: translateY(300%); } }
+.thread-dot { animation: thread 2.2s cubic-bezier(.65,0,.35,1) infinite; }
+@media (prefers-reduced-motion: reduce) { .thread-dot { animation: none; } }

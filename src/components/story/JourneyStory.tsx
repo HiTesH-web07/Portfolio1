@@ -2,22 +2,37 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowDown, ArrowRight, ArrowUpRight, GraduationCap, Briefcase, Lightbulb } from 'lucide-react';
 import Avatar from '../avatar/Avatar';
-import { gsap, SectionHead, revealSection, useGsap } from '../ui/motion';
+import { gsap, SectionHead, SplitWords, revealSection, useGsap } from '../ui/motion';
 import { chapters, type Chapter } from '@/data/content';
 
-const TONE: Record<Chapter['tone'], { bg: string; ink: string; sub: string }> = {
-  cream: { bg: '#F6F1E6', ink: '#24231F', sub: '#5C584E' },
-  sage: { bg: '#D9E4DC', ink: '#24231F', sub: '#45524A' },
-  forest: { bg: '#2D3A2E', ink: '#F1EBDD', sub: '#D9E4DC' },
-  clay: { bg: '#E8C6B8', ink: '#24231F', sub: '#5C4A42' },
+const TONE: Record<Chapter['tone'], { bg: string; ink: string; sub: string; tint: string }> = {
+  cream: { bg: '#F6F1E6', ink: '#24231F', sub: '#5C584E', tint: '#F6F1E6' },
+  sage: { bg: '#D9E4DC', ink: '#24231F', sub: '#45524A', tint: '#D9E4DC' },
+  forest: { bg: '#2D3A2E', ink: '#F1EBDD', sub: '#D9E4DC', tint: '#9DB2A1' },
+  clay: { bg: '#E8C6B8', ink: '#24231F', sub: '#5C4A42', tint: '#E8C6B8' },
 };
+
+const KIND = {
+  Education: { icon: GraduationCap, cls: 'bg-[#D9E4DC] text-[#24231F]' },
+  Employment: { icon: Briefcase, cls: 'bg-[#2D3A2E] text-[#F1EBDD]' },
+  Independent: { icon: Lightbulb, cls: 'bg-[#E8C6B8] text-[#24231F]' },
+} as const;
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+function KindBadge({ kind }: { kind: Chapter['kind'] }) {
+  const K = KIND[kind];
+  return <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${K.cls}`}><K.icon size={13} />{kind}</span>;
+}
 
 function Artifact({ kind }: { kind: Chapter['artifact'] }) {
   if (kind === 'notebook') return (
     <div className="relative w-56 rotate-2 rounded-2xl border border-[#E2D9C6] bg-[#FFFDF8] p-4 font-mono text-[12px] leading-6 text-[#24231F] shadow-lift" style={{ backgroundImage: 'repeating-linear-gradient(transparent 0 23px, #EDE5D3 23px 24px)' }}>
       <p className="text-[#8A6A1F]">#include &lt;stdio.h&gt;</p><p>int main() {'{'}</p><p className="pl-4">printf(<span className="text-[#B4462F]">&quot;Hello, World&quot;</span>);</p><p className="pl-4">return 0;</p><p>{'}'}</p>
       <span className="absolute -right-6 -top-5 rotate-6 rounded-md bg-[#E8C6B8] px-3 py-2 font-sans text-xs font-medium shadow-soft">DSA: graphs, DP</span>
+      <span className="absolute -bottom-4 -left-5 -rotate-6 rounded-md bg-[#D9E4DC] px-3 py-2 font-sans text-xs font-medium shadow-soft">late-night ideas</span>
     </div>
   );
   if (kind === 'kulies') return (
@@ -25,18 +40,19 @@ function Artifact({ kind }: { kind: Chapter['artifact'] }) {
       <div className="rounded-[1.1rem] bg-[#FBF8F1] p-3 text-[#24231F]">
         <div className="flex items-center justify-between"><span className="font-display font-semibold">Kulies</span><span className="rounded-full bg-[#2D3A2E] px-2 py-0.5 text-[10px] text-white">Cart · 2</span></div>
         <div className="mt-3 grid grid-cols-2 gap-2">{['#E8C6B8', '#D9E4DC', '#E9DFC8', '#D9E4DC'].map((c, i) => <div key={i} className="rounded-lg border border-[#E6DFCF] bg-white p-1.5"><div className="aspect-[4/3] rounded-md" style={{ background: c }} /><div className="mt-1.5 h-1.5 w-3/4 rounded bg-[#E6DFCF]" /></div>)}</div>
+        <div className="mt-2 flex items-center justify-between rounded-lg bg-[#F1EBDD] px-2 py-1.5 text-[10px]"><span>Pull request · approved</span><span className="text-emerald-700">✓ merged</span></div>
       </div>
       <p className="mt-2 text-center text-[10px] text-white/60">Illustration of the flows I worked on</p>
     </div>
   );
   if (kind === 'workflow') return (
-    <div className="w-64 space-y-0">
+    <div className="w-64">
       {[['Trigger', 'Something happens in app A'], ['Step', 'Map and transform the data'], ['Action', 'Update app B, notify the team']].map(([k, v], i) => (
         <div key={k}>
-          <div className="flex items-center gap-3 rounded-2xl bg-[#F1EBDD] p-3 text-[#24231F] shadow-lift">
+          <motion.div initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 + i * 0.15, duration: 0.5, ease }} className="flex items-center gap-3 rounded-2xl bg-[#F1EBDD] p-3 text-[#24231F] shadow-lift">
             <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-[#2D3A2E] font-mono text-xs text-[#F1EBDD]">{i + 1}</span>
             <span><span className="block text-[10px] font-medium uppercase tracking-[0.14em] text-[#5C584E]">{k}</span><span className="block text-sm">{v}</span></span>
-          </div>
+          </motion.div>
           {i < 2 && <svg aria-hidden width="16" height="26" className="ml-6"><line x1="8" y1="0" x2="8" y2="26" stroke="#D9E4DC" strokeWidth="2" strokeDasharray="4 4" className="flow-dash" /></svg>}
         </div>
       ))}
@@ -45,30 +61,39 @@ function Artifact({ kind }: { kind: Chapter['artifact'] }) {
   );
   return (
     <div className="relative h-52 w-72">
-      <div className="absolute left-0 top-6 w-56 -rotate-3 overflow-hidden rounded-2xl border-4 border-[#24231F] bg-[#24231F] shadow-lift"><div className="relative aspect-[16/10]"><Image src="/projects/mtac.webp" alt="Screenshot of Meeting-to-Action Closer" fill sizes="224px" className="object-cover object-top" /></div></div>
-      <div className="absolute right-0 top-0 w-56 rotate-3 overflow-hidden rounded-2xl border-4 border-[#24231F] bg-[#24231F] shadow-lift"><div className="relative aspect-[16/10]"><Image src="/projects/cairn.webp" alt="Screenshot of Cairn" fill sizes="224px" className="object-cover object-top" /></div></div>
+      <motion.div initial={{ rotate: 0, x: 30 }} animate={{ rotate: -4, x: 0 }} transition={{ duration: 0.7, ease }} className="absolute left-0 top-8 w-56 overflow-hidden rounded-2xl border-4 border-[#24231F] bg-[#24231F] shadow-lift"><div className="relative aspect-[16/10]"><Image src="/projects/mtac.webp" alt="Screenshot of Meeting-to-Action Closer" fill sizes="224px" className="object-cover object-top" /></div></motion.div>
+      <motion.div initial={{ rotate: 0, x: -30 }} animate={{ rotate: 3, x: 0 }} transition={{ duration: 0.7, ease }} className="absolute right-0 top-0 w-56 overflow-hidden rounded-2xl border-4 border-[#24231F] bg-[#24231F] shadow-lift"><div className="relative aspect-[16/10]"><Image src="/projects/cairn.webp" alt="Screenshot of Cairn" fill sizes="224px" className="object-cover object-top" /></div></motion.div>
+      <span className="absolute -bottom-2 left-6 rounded-full bg-[#24231F] px-3 py-1.5 text-xs text-[#F1EBDD] shadow-soft">gap noticed → product shipped</span>
     </div>
   );
 }
 
-function Stage({ c, active, total }: { c: Chapter; active: number; total: number }) {
+function Stage({ c, index, total }: { c: Chapter; index: number; total: number }) {
   const t = TONE[c.tone];
   return (
-    <div className="relative h-full overflow-hidden rounded-[2.5rem] p-7 transition-colors duration-700" style={{ background: t.bg, color: t.ink }}>
-      <div className="flex items-start justify-between">
-        <AnimatePresence mode="wait"><motion.span key={c.numeral} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} className="font-serif text-7xl italic leading-none">{c.numeral}</motion.span></AnimatePresence>
-        <span className="mt-2 text-right text-xs font-medium uppercase tracking-[0.14em]" style={{ color: t.sub }}>Chapter {active + 1} of {total}</span>
+    <div className="relative h-full overflow-hidden rounded-[2.5rem] p-7 transition-[background-color,color] duration-[900ms] ease-[cubic-bezier(.22,1,.36,1)]" style={{ background: t.bg, color: t.ink }}>
+      <div aria-hidden className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-white/20 transition-transform duration-[1200ms]" style={{ transform: `translate(${index * -14}px, ${index * 22}px)` }} />
+      <div className="relative flex items-start justify-between gap-4">
+        <div className="relative h-16 w-24 overflow-hidden">
+          <AnimatePresence initial={false}>
+            <motion.span key={c.numeral} initial={{ y: '100%' }} animate={{ y: 0 }} exit={{ y: '-100%' }} transition={{ duration: 0.6, ease }} className="absolute left-0 top-0 font-serif text-7xl italic leading-none">{c.numeral}</motion.span>
+          </AnimatePresence>
+        </div>
+        <div className="text-right">
+          <span className="block text-xs font-medium uppercase tracking-[0.14em]" style={{ color: t.sub }}>Chapter {index + 1} of {total}</span>
+          <span className="mt-2 inline-block"><KindBadge kind={c.kind} /></span>
+        </div>
       </div>
-      <div className="absolute bottom-0 left-2 w-[58%]"><Avatar pose={c.pose} title={`Illustration of Hitesh: ${c.title}`} /></div>
-      <div className="absolute right-6 top-1/2 -translate-y-1/2 max-lg:right-3 max-lg:origin-right max-lg:scale-[.66]">
+      <div className="absolute bottom-0 left-2 w-[58%]"><Avatar pose={c.pose} expression={c.expression} title={`Illustration of Hitesh: ${c.title}`} /></div>
+      <div data-stage-art className="absolute right-6 top-[52%] -translate-y-1/2 max-lg:right-3 max-lg:origin-right max-lg:scale-[.66]">
         <AnimatePresence mode="wait">
-          <motion.div key={c.artifact} initial={{ opacity: 0, y: 24, rotate: -2 }} animate={{ opacity: 1, y: 0, rotate: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
+          <motion.div key={c.artifact} initial={{ opacity: 0, y: 28, rotate: -3, scale: 0.96 }} animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }} exit={{ opacity: 0, y: -18, scale: 0.98 }} transition={{ duration: 0.6, ease }}>
             <Artifact kind={c.artifact} />
           </motion.div>
         </AnimatePresence>
       </div>
       <div className="absolute bottom-6 right-7 flex gap-1.5" aria-hidden>
-        {Array.from({ length: total }).map((_, i) => <span key={i} className="h-1.5 rounded-full transition-all duration-500" style={{ width: i === active ? 28 : 10, background: t.ink, opacity: i === active ? 0.9 : 0.25 }} />)}
+        {Array.from({ length: total }).map((_, i) => <span key={i} className="h-1.5 rounded-full transition-all duration-700" style={{ width: i === index ? 28 : 10, background: t.ink, opacity: i === index ? 0.9 : 0.25 }} />)}
       </div>
     </div>
   );
@@ -85,29 +110,60 @@ export default function JourneyStory() {
     return () => io.disconnect();
   }, []);
 
-  useGsap(root, () => {
+  useGsap(root, ({ isDesktop }) => {
     revealSection(root.current);
+    gsap.fromTo('[data-thread-fill]', { scaleY: 0 }, { scaleY: 1, ease: 'none', transformOrigin: 'top', scrollTrigger: { trigger: '[data-chapters]', start: 'top 55%', end: 'bottom 55%', scrub: 0.6 } });
     gsap.utils.toArray<HTMLElement>('[data-chapter]').forEach((el) => {
-      gsap.from(el.querySelectorAll('[data-reveal]'), { y: 30, opacity: 0, stagger: 0.1, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 70%', once: true } });
+      const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: 'top 72%', once: true } });
+      tl.from(el.querySelectorAll('[data-meta]'), { y: 14, opacity: 0, duration: 0.6, ease: 'power3.out' })
+        .from(el.querySelectorAll('h3 [data-word]'), { yPercent: 110, duration: 0.9, stagger: 0.05, ease: 'expo.out' }, '-=0.35')
+        .from(el.querySelectorAll('[data-reveal]'), { y: 24, opacity: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out' }, '-=0.6');
+      const bridge = el.querySelector('[data-bridge]');
+      if (bridge) gsap.from(bridge, { y: 20, opacity: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: bridge, start: 'top 85%', once: true } });
     });
+    if (isDesktop) gsap.to('[data-stage-art]', { yPercent: -10, ease: 'none', scrollTrigger: { trigger: '[data-chapters]', start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 
+  const cur = chapters[active];
   return (
     <section id="journey" ref={root} aria-labelledby="journey-title" className="relative py-24 sm:py-32">
+      {/* the whole chapter area takes on a soft tint of the current chapter */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-[0.22] transition-colors duration-[1200ms] dark:opacity-[0.08]" style={{ background: `linear-gradient(180deg, transparent 0%, ${TONE[cur.tone].tint} 18%, ${TONE[cur.tone].tint} 82%, transparent 100%)` }} />
       <div className="wrap">
-        <SectionHead id="journey-title" eyebrow="01 · The story so far" title="Four chapters," accent="one habit: building." intro="From a curious CSE student to a full-stack developer shipping products of his own. Scroll through the chapters." />
+        <SectionHead id="journey-title" eyebrow="01 · The story so far" title="Four chapters," accent="one habit: building." intro="Not a résumé. The story of how a curious student became a developer who builds what is missing." />
         <div className="mt-16 grid gap-12 lg:grid-cols-12">
           <div className="hidden lg:col-span-6 lg:block">
-            <div className="sticky top-[12vh] h-[76vh]"><Stage c={chapters[active]} active={active} total={chapters.length} /></div>
+            <div className="sticky top-[12vh] h-[76vh]"><Stage c={cur} index={active} total={chapters.length} /></div>
           </div>
-          <ol className="lg:col-span-6">
+
+          <ol data-chapters className="relative lg:col-span-6 lg:pl-12">
+            <span aria-hidden className="absolute bottom-0 left-[11px] top-0 w-px bg-line lg:left-[23px]" />
+            <span aria-hidden data-thread-fill className="absolute bottom-0 left-[11px] top-0 w-px bg-ink lg:left-[23px]" />
             {chapters.map((c, i) => (
-              <li key={c.id} data-chapter className={`flex flex-col justify-center py-10 transition-opacity duration-500 lg:min-h-[80vh] lg:pl-6 ${i === active ? 'lg:opacity-100' : 'lg:opacity-35'}`}>
-                <div className="mb-6 h-80 lg:hidden"><Stage c={c} active={i} total={chapters.length} /></div>
-                <p data-reveal className="font-mono text-sm text-muted">{c.when}</p>
-                <h3 data-reveal className="mt-3 text-4xl font-semibold sm:text-5xl"><span className="mr-3 font-serif font-normal italic text-[#B4462F] dark:text-[#E8C6B8]">{c.numeral}.</span>{c.title}</h3>
-                {c.body.map((b, k) => <p key={k} data-reveal className="mt-5 max-w-xl text-lg leading-relaxed text-muted">{b}</p>)}
-                <ul data-reveal className="mt-6 flex flex-wrap gap-2">{c.tags.map((t) => <li key={t} className="chip">{t}</li>)}</ul>
+              <li key={c.id} data-chapter className={`relative pb-6 pl-10 transition-opacity duration-700 lg:pl-0 ${i === active ? 'lg:opacity-100' : 'lg:opacity-40'}`}>
+                <span aria-hidden className={`absolute left-0 top-12 grid h-6 w-6 place-items-center rounded-full border-2 transition-colors duration-500 lg:-left-[36px] lg:top-[calc(50%-12px)] ${i <= active ? 'border-ink bg-ink' : 'border-line bg-bg'}`}><span className={`h-1.5 w-1.5 rounded-full ${i <= active ? 'bg-bg' : 'bg-line'}`} /></span>
+                <div className="flex flex-col justify-center py-10 lg:min-h-[78vh]">
+                  <div className="mb-6 h-80 sm:h-96 lg:hidden"><Stage c={c} index={i} total={chapters.length} /></div>
+                  <div data-meta className="flex flex-wrap items-center gap-3"><KindBadge kind={c.kind} /><span className="font-mono text-sm text-muted">{c.when}</span></div>
+                  <h3 className="mt-4 text-4xl font-semibold leading-[1.05] sm:text-5xl"><span className="mr-3 font-serif font-normal italic text-[#B4462F] dark:text-[#E8C6B8]">{c.numeral}.</span><SplitWords text={c.title} /></h3>
+                  {c.body.map((b, k) => <p key={k} data-reveal className="mt-5 max-w-xl text-lg leading-relaxed text-muted">{b}</p>)}
+                  <figure data-reveal className="mt-7 max-w-xl border-l-2 border-[#B4462F] pl-5 dark:border-[#E8C6B8]">
+                    <figcaption className="eyebrow">What it taught me</figcaption>
+                    <blockquote className="mt-2 font-serif text-2xl italic leading-snug">“{c.lesson}”</blockquote>
+                  </figure>
+                  <ul data-reveal className="mt-6 flex flex-wrap gap-2">{c.tags.map((t) => <li key={t} className="chip">{t}</li>)}</ul>
+                  {c.kind === 'Independent' && (
+                    <div data-reveal className="mt-7 flex flex-wrap gap-3">
+                      <motion.a whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} href="#work" className="btn-primary">See how I built them <ArrowRight size={16} /></motion.a>
+                      <motion.a whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }} href="https://proof-of-impact.embarko.app" target="_blank" rel="noreferrer" className="btn-ghost">Try Cairn live <ArrowUpRight size={16} /><span className="sr-only">(opens in a new tab)</span></motion.a>
+                    </div>
+                  )}
+                </div>
+                {c.bridge && (
+                  <p data-bridge className="flex items-center gap-3 pb-4 font-serif text-xl italic text-muted lg:text-2xl">
+                    <ArrowDown size={18} className="shrink-0 text-[#B4462F] dark:text-[#E8C6B8]" />{c.bridge}
+                  </p>
+                )}
               </li>
             ))}
           </ol>

@@ -363,13 +363,15 @@ export const nav = [
 // ---------- Redesign (preview): hero identity and four story chapters ----------
 export const heroStory = {
   kicker: "Hi, I'm",
+  role: 'Full-stack developer',
+  roleLine: 'I build web products end to end, and automate the work in between.',
   motto: [
     { lead: 'Curious', rest: 'by nature.' },
     { lead: 'Persistent', rest: 'by choice.' },
     { lead: 'A builder', rest: 'by passion.' },
   ],
   intro:
-    'I build web products end to end, from React interfaces to Node.js backends and databases, and I automate the work in between. I do it at viaSocket, and in independent AI-powered products of my own.',
+    'React and Next.js interfaces, Node.js backends, databases and workflow automation. I do it at viaSocket, and in AI-powered products I build on my own initiative.',
   interests: ['Full-stack product engineering', 'Workflow automation', 'AI-powered products'],
   facts: [
     { k: 'Role', v: 'Full-stack developer at viaSocket' },
@@ -380,45 +382,53 @@ export const heroStory = {
 };
 
 export type Chapter = {
-  id: string; numeral: string; when: string; title: string; body: string[]; pose: Pose;
+  id: string; numeral: string; kind: 'Education' | 'Employment' | 'Independent'; when: string; title: string;
+  body: string[]; lesson: string; bridge?: string; pose: Pose; expression: 'smile' | 'joy' | 'focus' | 'puzzled' | 'curious' | 'calm';
   tone: 'cream' | 'sage' | 'forest' | 'clay'; artifact: 'notebook' | 'kulies' | 'workflow' | 'products'; tags: string[];
 };
 
 export const chapters: Chapter[] = [
   {
-    id: 'student', numeral: 'I', when: '2022 – 2026 · Medi-Caps University', tone: 'cream', artifact: 'notebook', pose: 'explore',
+    id: 'student', numeral: 'I', kind: 'Education', when: '2022 – 2026 · B.Tech CSE, Medi-Caps University', tone: 'cream', artifact: 'notebook', pose: 'explore', expression: 'curious',
     title: 'The curious student',
     body: [
-      'I joined B.Tech Computer Science with one question: how does software actually work? The answer started in C and C++, with data structures and algorithms.',
-      'Then I learned the way I still learn best: by building. Late-night huddles with friends turned ideas into React apps, Node.js APIs and SENSAI, an AI career coach on the Gemini API.',
+      "I didn't start with a plan. I started with a question that wouldn't leave me alone: how does software actually work? I went looking for the answer in C, C++ and a lot of data structures.",
+      'The real classroom opened after class. Late-night huddles with friends, half-finished ideas, debugging sessions that ran past midnight. That is where I learned the full stack, from React screens to Node.js APIs to PostgreSQL tables, and built SENSAI, an AI career coach on the Gemini API.',
     ],
-    tags: ['C / C++', 'DSA', 'React', 'SENSAI'],
+    lesson: "You don't really understand something until you've built it.",
+    bridge: 'Curiosity got me building. Next, I needed to learn how real teams ship.',
+    tags: ['C / C++', 'DSA', 'React', 'Node.js', 'SENSAI'],
   },
   {
-    id: 'thinkdebug', numeral: 'II', when: 'Feb – Apr 2025 · Think Debug', tone: 'sage', artifact: 'kulies', pose: 'laptop',
+    id: 'thinkdebug', numeral: 'II', kind: 'Employment', when: 'Feb – Apr 2025 · Frontend Developer Intern, Think Debug', tone: 'sage', artifact: 'kulies', pose: 'laptop', expression: 'focus',
     title: 'My first real codebase',
     body: [
-      'At Think Debug I joined a six-engineer team shipping Kulies, a B2B2C e-commerce product, in weekly sprints with pull requests and code reviews.',
-      'I built 15+ reusable React components, integrated 20+ REST APIs and made the frontend 18% faster by cutting unnecessary re-renders.',
+      "Think Debug was the first time my code lived inside someone else's product: Kulies, a B2B2C e-commerce app, built by six engineers in weekly sprints, where my pull requests came back with review comments.",
+      'It taught me that good code is code other people can build on. I wrote 15+ reusable React components, connected 20+ REST APIs, fixed 30+ defects and made the frontend 18% faster by removing re-renders nobody needed.',
     ],
+    lesson: 'Shipping is a team sport, and every review makes you better.',
+    bridge: 'Then college ended, and the work got bigger.',
     tags: ['React', 'Redux Toolkit', 'Tailwind CSS', '18% faster'],
   },
   {
-    id: 'viasocket', numeral: 'III', when: 'May 2026 – now · Walkover (viaSocket)', tone: 'forest', artifact: 'workflow', pose: 'think',
+    id: 'viasocket', numeral: 'III', kind: 'Employment', when: 'May 2026 – now · Integration Solution Engineer, Walkover (viaSocket)', tone: 'forest', artifact: 'workflow', pose: 'think', expression: 'focus',
     title: 'Full stack, at scale',
     body: [
-      'I graduated in May 2026 and joined Walkover the same month. On viaSocket, a no-code AI automation platform, I work across the stack: Next.js interfaces, Node.js services and the integrations that connect them.',
-      'I have built 100+ integration modules (OAuth 2.0, webhooks, pagination, data mapping) and I automate things: multi-step workflows that save people from repetitive work.',
+      'I graduated in May 2026 and joined Walkover the same month. viaSocket is a no-code AI automation platform used by 100,000+ people, so the things I build reach real users.',
+      'This is where I grew into a full-stack engineer: Next.js screens, Node.js services and 100+ integration modules handling OAuth, webhooks and pagination. And I automate things, building workflows that take repetitive work off people\'s plates.',
     ],
+    lesson: 'Every layer is my layer: interface, API, data or automation.',
+    bridge: 'Working across the stack, I kept noticing gaps. So I started filling them.',
     tags: ['Next.js', 'Node.js', 'Automation', '100+ integrations'],
   },
   {
-    id: 'products', numeral: 'IV', when: 'Now · and next', tone: 'clay', artifact: 'products', pose: 'celebrate',
-    title: 'Building my own products',
+    id: 'products', numeral: 'IV', kind: 'Independent', when: 'Now · Independent projects, on my own initiative', tone: 'clay', artifact: 'products', pose: 'celebrate', expression: 'joy',
+    title: 'Building what was missing',
     body: [
-      'I also design, build and ship independent products end to end: Meeting-to-Action Closer turns meetings into Asana tasks with AI; Cairn measures the value of work, not the volume.',
-      'Each has its own frontend, backend, database, tests and AI features. Next: bigger products, and deeper work in AI.',
+      'While working, I kept seeing gaps: decisions made in meetings that nobody followed up on, and teams that rewarded looking busy over doing what mattered. Noticing was not enough. I built.',
+      'Meeting-to-Action Closer turns meeting transcripts into Asana tasks and follows up in Slack. Cairn measures the value of work, not the volume. I designed, built, tested and shipped both myself, each with its own frontend, backend, database and AI features.',
     ],
-    tags: ['Meeting-to-Action Closer', 'Cairn', 'AI products'],
+    lesson: "If something's missing, build it. Next: bigger products and deeper AI.",
+    tags: ['Meeting-to-Action Closer', 'Cairn', 'Initiative', 'AI products'],
   },
 ];
