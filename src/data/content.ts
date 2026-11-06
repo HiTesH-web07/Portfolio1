@@ -359,3 +359,66 @@ export const nav = [
   { id: 'skills', label: 'Skills' },
   { id: 'contact', label: 'Contact' },
 ];
+
+// ---------- Redesign (preview): hero identity and four story chapters ----------
+export const heroStory = {
+  kicker: "Hi, I'm",
+  motto: [
+    { lead: 'Curious', rest: 'by nature.' },
+    { lead: 'Persistent', rest: 'by choice.' },
+    { lead: 'A builder', rest: 'by passion.' },
+  ],
+  intro:
+    'I build web products end to end, from React interfaces to Node.js backends and databases, and I automate the work in between. I do it at viaSocket, and in independent AI-powered products of my own.',
+  interests: ['Full-stack product engineering', 'Workflow automation', 'AI-powered products'],
+  facts: [
+    { k: 'Role', v: 'Full-stack developer at viaSocket' },
+    { k: 'Stack', v: 'React · Next.js · Node.js · PostgreSQL' },
+    { k: 'Based in', v: 'Indore, India' },
+  ],
+  now: { label: 'Latest build', name: 'Cairn', note: 'Measures the value of work, not the volume.', image: '/projects/cairn.webp', href: 'https://proof-of-impact.embarko.app' },
+};
+
+export type Chapter = {
+  id: string; numeral: string; when: string; title: string; body: string[]; pose: Pose;
+  tone: 'cream' | 'sage' | 'forest' | 'clay'; artifact: 'notebook' | 'kulies' | 'workflow' | 'products'; tags: string[];
+};
+
+export const chapters: Chapter[] = [
+  {
+    id: 'student', numeral: 'I', when: '2022 – 2026 · Medi-Caps University', tone: 'cream', artifact: 'notebook', pose: 'explore',
+    title: 'The curious student',
+    body: [
+      'I joined B.Tech Computer Science with one question: how does software actually work? The answer started in C and C++, with data structures and algorithms.',
+      'Then I learned the way I still learn best: by building. Late-night huddles with friends turned ideas into React apps, Node.js APIs and SENSAI, an AI career coach on the Gemini API.',
+    ],
+    tags: ['C / C++', 'DSA', 'React', 'SENSAI'],
+  },
+  {
+    id: 'thinkdebug', numeral: 'II', when: 'Feb – Apr 2025 · Think Debug', tone: 'sage', artifact: 'kulies', pose: 'laptop',
+    title: 'My first real codebase',
+    body: [
+      'At Think Debug I joined a six-engineer team shipping Kulies, a B2B2C e-commerce product, in weekly sprints with pull requests and code reviews.',
+      'I built 15+ reusable React components, integrated 20+ REST APIs and made the frontend 18% faster by cutting unnecessary re-renders.',
+    ],
+    tags: ['React', 'Redux Toolkit', 'Tailwind CSS', '18% faster'],
+  },
+  {
+    id: 'viasocket', numeral: 'III', when: 'May 2026 – now · Walkover (viaSocket)', tone: 'forest', artifact: 'workflow', pose: 'think',
+    title: 'Full stack, at scale',
+    body: [
+      'I graduated in May 2026 and joined Walkover the same month. On viaSocket, a no-code AI automation platform, I work across the stack: Next.js interfaces, Node.js services and the integrations that connect them.',
+      'I have built 100+ integration modules (OAuth 2.0, webhooks, pagination, data mapping) and I automate things: multi-step workflows that save people from repetitive work.',
+    ],
+    tags: ['Next.js', 'Node.js', 'Automation', '100+ integrations'],
+  },
+  {
+    id: 'products', numeral: 'IV', when: 'Now · and next', tone: 'clay', artifact: 'products', pose: 'celebrate',
+    title: 'Building my own products',
+    body: [
+      'I also design, build and ship independent products end to end: Meeting-to-Action Closer turns meetings into Asana tasks with AI; Cairn measures the value of work, not the volume.',
+      'Each has its own frontend, backend, database, tests and AI features. Next: bigger products, and deeper work in AI.',
+    ],
+    tags: ['Meeting-to-Action Closer', 'Cairn', 'AI products'],
+  },
+];

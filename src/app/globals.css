@@ -83,3 +83,6 @@
 @keyframes av-wave { 0%, 60%, 100% { transform: rotate(0deg); } 15%, 45% { transform: rotate(-9deg); } 30% { transform: rotate(5deg); } }
 .av-wave { transform-box: view-box; animation: av-wave 2.6s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .av-wave { animation: none !important; } }
+@keyframes flow { to { stroke-dashoffset: -16; } }
+.flow-dash { animation: flow 1s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .flow-dash { animation: none; } }
