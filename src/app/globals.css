@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens: warm editorial palette. Values are RGB triples so Tailwind can add alpha. */
+:root {
+  --bg: 241 235 221;       /* warm cream #F1EBDD */
+  --paper: 255 255 255;
+  --ink: 36 35 31;         /* charcoal #24231F */
+  --muted: 92 88 78;
+  --line: 214 205 186;
+  --forest: 45 58 46;      /* #2D3A2E */
+  --sage: 217 228 220;     /* #D9E4DC */
+  --clay: 232 198 184;     /* soft terracotta #E8C6B8 */
+  --accent: 45 58 46;
+  --on-accent: 241 235 221;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+  color-scheme: light;
+}
+[data-theme='dark'] {
+  --bg: 22 25 21;
+  --paper: 31 35 30;
+  --ink: 241 235 221;
+  --muted: 178 172 156;
+  --line: 60 66 58;
+  --forest: 38 50 40;
+  --sage: 42 54 45;
+  --clay: 84 60 52;
+  --accent: 217 228 220;
+  --on-accent: 22 25 21;
+  color-scheme: dark;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-bg text-ink font-sans antialiased; text-rendering: optimizeLegibility; overflow-x: hidden; }
+  h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.025em; }
+  ::selection { background: rgb(var(--clay)); color: rgb(36 35 31); }
+  :focus-visible { outline: 2px solid rgb(var(--ink)); outline-offset: 3px; border-radius: 6px; }
+  section[id] { scroll-margin-top: 5rem; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-page px-5 sm:px-8; }
+  .eyebrow { @apply font-display text-xs font-medium uppercase tracking-[0.18em] text-muted; }
+  .h-section { @apply font-display text-[2.4rem] font-semibold leading-[1.02] sm:text-6xl; }
+  .serif { @apply font-serif font-normal italic tracking-normal; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-paper/70 px-3 py-1 text-sm text-ink; }
+  .card { @apply rounded-4xl border border-line bg-paper shadow-soft; }
+  .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-5 text-[15px] font-medium transition-colors duration-300; }
+  .btn-primary { @apply btn bg-accent text-onaccent hover:bg-ink hover:text-bg; }
+  .btn-ghost { @apply btn border border-ink/20 text-ink hover:border-ink hover:bg-ink/5; }
+}
+
+/* Grain: a static texture, cheap to paint */
+.grain::after {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: .05; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+[data-theme='dark'] .grain::after { mix-blend-mode: screen; opacity: .04; }
+
+/* Avatar idle motion */
+@keyframes av-float { 50% { transform: translateY(-6px); } }
+@keyframes av-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+@keyframes drift { 50% { transform: translate3d(var(--dx, 6px), var(--dy, -10px), 0) rotate(var(--rot, 4deg)); } }
+@keyframes dots { 0%, 80%, 100% { opacity: .25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+.av-float { animation: av-float 5s var(--ease) infinite; }
+.av-eyes { transform-box: fill-box; transform-origin: center; animation: av-blink 5.5s infinite; }
+.drift { animation: drift var(--t, 7s) ease-in-out infinite; }
+.typing span { animation: dots 1.2s infinite; display: inline-block; }
+.typing span:nth-child(2) { animation-delay: .15s; } .typing span:nth-child(3) { animation-delay: .3s; }
+
+/* Before JS runs, keep reveal targets visible; GSAP hides them only when motion is allowed */
+.split-word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .08em; margin-bottom: -.08em; }
+.split-word > span { display: inline-block; will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .av-float, .av-eyes, .drift, .typing span { animation: none !important; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+@keyframes av-wave { 0%, 60%, 100% { transform: rotate(0deg); } 15%, 45% { transform: rotate(-9deg); } 30% { transform: rotate(5deg); } }
+.av-wave { transform-box: view-box; animation: av-wave 2.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .av-wave { animation: none !important; } }
