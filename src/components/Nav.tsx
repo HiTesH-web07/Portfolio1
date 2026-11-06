@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, Moon, Sun, X, MessageCircle, Download } from 'lucide-react';
 import { nav, profile } from '@/data/content';
+import { useChat } from './chat/ChatContext';
 
 export function ThemeToggle() {
   const [dark, setDark] = useState(false);
@@ -24,6 +25,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('');
+  const { openPanel } = useChat();
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
@@ -53,7 +55,7 @@ export default function Nav() {
         <div className="flex items-center gap-1">
           <ThemeToggle />
           <a href={profile.resume} download aria-label="Download resume (PDF)" title="Download resume" className="hidden h-11 items-center gap-1.5 rounded-full px-3 text-[15px] text-muted transition-colors hover:bg-ink/5 hover:text-ink md:inline-flex"><Download size={17} /><span className="hidden xl:inline">Resume</span></a>
-          <motion.a whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }} href="#ask" className="btn-primary hidden !min-h-[40px] !px-4 sm:inline-flex"><MessageCircle size={16} />Ask Hitesh</motion.a>
+          <motion.button whileHover={{ y: -1 }} whileTap={{ scale: 0.97 }} onClick={openPanel} aria-haspopup="dialog" className="btn-primary hidden !min-h-[40px] !px-4 sm:inline-flex"><MessageCircle size={16} />Ask Hitesh</motion.button>
           <button className="grid h-11 w-11 place-items-center rounded-full lg:hidden" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}><Menu size={20} /></button>
         </div>
       </nav>
@@ -65,11 +67,14 @@ export default function Nav() {
               <button className="grid h-11 w-11 place-items-center rounded-full" aria-label="Close menu" onClick={() => setOpen(false)}><X size={22} /></button>
             </div>
             <ul className="wrap mt-6 grid gap-1">
-              {[...nav, { id: 'ask', label: 'Ask Hitesh' }].map((n, i) => (
+              {nav.map((n, i) => (
                 <motion.li key={n.id} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 * i, ease: [0.22, 1, 0.36, 1], duration: 0.5 }}>
                   <a href={`#${n.id}`} onClick={() => setOpen(false)} className="block border-b border-line py-4 font-display text-3xl font-medium">{n.label}</a>
                 </motion.li>
               ))}
+              <motion.li initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 * nav.length, ease: [0.22, 1, 0.36, 1], duration: 0.5 }}>
+                <button onClick={() => { setOpen(false); setTimeout(openPanel, 250); }} className="flex w-full items-center gap-3 border-b border-line py-4 text-left font-display text-3xl font-medium"><MessageCircle size={26} />Ask Hitesh</button>
+              </motion.li>
             </ul>
             <div className="wrap mt-8"><a href={profile.resume} download className="btn-primary w-full"><Download size={17} />Download resume</a></div>
           </motion.div>

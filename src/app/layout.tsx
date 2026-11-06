@@ -1,10 +1,12 @@
 import type { Metadata, Viewport } from 'next';
-import '@fontsource-variable/space-grotesk';
-import '@fontsource-variable/dm-sans';
+import localFont from 'next/font/local';
 import '@fontsource/instrument-serif/400.css';
 import '@fontsource/instrument-serif/400-italic.css';
 import './globals.css';
 import { profile } from '@/data/content';
+
+const geist = localFont({ src: './fonts/geist-latin-wght-normal.woff2', variable: '--font-geist', weight: '100 900', display: 'swap' });
+const geistMono = localFont({ src: './fonts/geist-mono-latin-wght-normal.woff2', variable: '--font-geist-mono', weight: '100 900', display: 'swap' });
 
 const site = process.env.SITE_URL || 'https://hitesh-ahuja.embarko.app';
 const description =
@@ -43,7 +45,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

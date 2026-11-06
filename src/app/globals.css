@@ -34,7 +34,7 @@
 @layer base {
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body { @apply bg-bg text-ink font-sans antialiased; text-rendering: optimizeLegibility; overflow-x: hidden; }
-  h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.025em; }
+  h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.03em; }
   ::selection { background: rgb(var(--clay)); color: rgb(36 35 31); }
   :focus-visible { outline: 2px solid rgb(var(--ink)); outline-offset: 3px; border-radius: 6px; }
   section[id] { scroll-margin-top: 5rem; }
@@ -42,9 +42,9 @@
 
 @layer components {
   .wrap { @apply mx-auto w-full max-w-page px-5 sm:px-8; }
-  .eyebrow { @apply font-display text-xs font-medium uppercase tracking-[0.18em] text-muted; }
+  .eyebrow { @apply font-sans text-[11px] font-medium uppercase tracking-[0.16em] text-muted; }
   .h-section { @apply font-display text-[2.4rem] font-semibold leading-[1.02] sm:text-6xl; }
-  .serif { @apply font-serif font-normal italic tracking-normal; }
+  .serif { @apply font-serif font-normal italic tracking-[-0.01em]; }
   .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-paper/70 px-3 py-1 text-sm text-ink; }
   .card { @apply rounded-4xl border border-line bg-paper shadow-soft; }
   .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-5 text-[15px] font-medium transition-colors duration-300; }

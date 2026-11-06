@@ -97,7 +97,7 @@ function layers(pose: Pose): { back: React.ReactNode; front: React.ReactNode } {
         front: (
           <>
             <Arm d={`M${RS.x} ${RS.y} Q 310 210 246 108`} hand={[244, 104]} front />
-            <text x={300} y={70} fontFamily="Space Grotesk Variable, system-ui" fontWeight={600} fontSize={34} fill={C.ink} opacity={0.75}>?</text>
+            <text x={300} y={70} fontFamily="var(--font-geist), system-ui" fontWeight={600} fontSize={34} fill={C.ink} opacity={0.75}>?</text>
           </>
         ),
       };

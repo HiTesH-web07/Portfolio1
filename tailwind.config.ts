@@ -17,8 +17,9 @@ export default {
         onaccent: 'rgb(var(--on-accent) / <alpha-value>)',
       },
       fontFamily: {
-        display: ['"Space Grotesk Variable"', 'system-ui', 'sans-serif'],
-        sans: ['"DM Sans Variable"', 'system-ui', 'sans-serif'],
+        display: ['var(--font-geist)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-geist)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
         serif: ['"Instrument Serif"', 'Georgia', 'serif'],
       },
       borderRadius: { '4xl': '2rem' },

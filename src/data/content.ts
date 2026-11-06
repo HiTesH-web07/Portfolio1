@@ -371,7 +371,7 @@ export const heroStory = {
     { lead: 'A builder', rest: 'by passion.' },
   ],
   intro:
-    'React and Next.js interfaces, Node.js backends, databases and workflow automation. I do it at viaSocket, and in AI-powered products I build on my own initiative.',
+    "I'm a full-stack developer: React and Next.js interfaces, Node.js backends, databases and workflow automation. I build at viaSocket, and in AI-powered products of my own.",
   interests: ['Full-stack product engineering', 'Workflow automation', 'AI-powered products'],
   facts: [
     { k: 'Role', v: 'Full-stack developer at viaSocket' },
@@ -432,3 +432,46 @@ export const chapters: Chapter[] = [
     tags: ['Meeting-to-Action Closer', 'Cairn', 'Initiative', 'AI products'],
   },
 ];
+
+// ---------- Redesign (preview): case-study framing for projects ----------
+export type Arch = { layer: string; items: string[] }[];
+export const caseStudies: Record<string, { label: 'Independent project' | 'Personal project' | 'Work project'; gap: string; arch: Arch; side?: { label: string; items: string[] } }> = {
+  cairn: {
+    label: 'Independent project',
+    gap: 'Teams often reward whoever looks busiest. Hours and activity counts say little about whether the most important work got done well.',
+    arch: [
+      { layer: 'Interface', items: ['Single-page app', 'Vanilla JavaScript', 'Light and dark themes'] },
+      { layer: 'API', items: ['Node.js + Express', 'REST endpoints', 'Auth and roles'] },
+      { layer: 'Data', items: ['SQLite', 'People, priorities, ratings, disputes'] },
+    ],
+    side: { label: 'Connected services', items: ['Gemini (Ask Cairn)', 'Slack and Keka via viaSocket', 'M91 phone alerts', 'Email resets'] },
+  },
+  'meeting-to-action': {
+    label: 'Independent project',
+    gap: 'Decisions made in meetings get lost between the transcript and the task tracker, and nobody follows up.',
+    arch: [
+      { layer: 'Interface', items: ['Next.js + React', 'TypeScript', 'Role-based views'] },
+      { layer: 'API', items: ['Next.js API routes', 'AI task extraction', 'Duplicate-safe writes'] },
+      { layer: 'Data', items: ['PostgreSQL', 'Prisma ORM'] },
+    ],
+    side: { label: 'Connected services', items: ['Fireflies', 'Google Calendar', 'Asana', 'Slack'] },
+  },
+  sensai: {
+    label: 'Personal project',
+    gap: 'Job seekers need focused, personal help with resumes and interview preparation.',
+    arch: [
+      { layer: 'Interface', items: ['Next.js + React'] },
+      { layer: 'API', items: ['One REST route per feature', 'Gemini API'] },
+      { layer: 'Data', items: ['PostgreSQL', 'Prisma ORM'] },
+    ],
+    side: { label: 'Services', items: ['Clerk authentication', 'Gemini API'] },
+  },
+  kulies: {
+    label: 'Work project',
+    gap: 'A B2B2C store needs fast, consistent shopping flows on every screen size.',
+    arch: [
+      { layer: 'Interface (my scope)', items: ['React components', 'Tailwind CSS', 'Redux Toolkit state'] },
+      { layer: 'API', items: ['20+ REST APIs via Axios', 'Loading and error states'] },
+    ],
+  },
+};

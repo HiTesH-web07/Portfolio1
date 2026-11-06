@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, Github, X, Clock } from 'lucide-react';
 import { SectionHead, revealSection, useGsap, gsap } from './ui/motion';
-import { projects, type Project } from '@/data/content';
+import { projects, caseStudies, type Project } from '@/data/content';
+import ArchDiagram from './story/ArchDiagram';
 
 const TONE: Record<Project['tone'], string> = {
   forest: 'bg-[#2D3A2E] text-[#F1EBDD]',
@@ -56,7 +57,7 @@ function Links({ p, size = 'md' }: { p: Project; size?: 'md' | 'sm' }) {
   );
 }
 
-function CaseStudy({ p, onClose }: { p: Project; onClose: () => void }) {
+export function CaseStudy({ p, onClose }: { p: Project; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     const prev = document.activeElement as HTMLElement | null;
@@ -81,6 +82,16 @@ function CaseStudy({ p, onClose }: { p: Project; onClose: () => void }) {
           <p className="mt-4 max-w-2xl text-lg text-muted">{p.short}</p>
           <div className="mt-6"><Links p={p} /></div>
           <div className="mt-8"><Tablet p={p} sizes="(min-width: 900px) 800px, 100vw" /></div>
+          {caseStudies[p.id] && (
+            <div className="mt-10 grid gap-8 rounded-3xl bg-[#F6F1E6] p-6 text-[#24231F] sm:grid-cols-2 sm:p-8">
+              <div>
+                <h4 className="eyebrow !text-[#5C584E]">{caseStudies[p.id].label === 'Work project' ? 'The challenge' : 'The gap I noticed'}</h4>
+                <p className="mt-3 font-serif text-2xl italic leading-snug">“{caseStudies[p.id].gap}”</p>
+                <span className="mt-4 inline-block rounded-full bg-[#E8C6B8] px-2.5 py-1 text-xs font-medium">{caseStudies[p.id].label}</span>
+              </div>
+              <div><h4 className="eyebrow !text-[#5C584E]">How it is built</h4><div className="mt-3"><ArchDiagram arch={caseStudies[p.id].arch} side={caseStudies[p.id].side} /></div></div>
+            </div>
+          )}
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
             {block('The problem', p.problem)}
             {block('The solution', p.solution)}
