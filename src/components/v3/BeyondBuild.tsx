@@ -10,7 +10,7 @@ import { stories, exploring, fundamentals, caseStudies, projects, type TechItem 
 const ease = [0.22, 1, 0.36, 1] as const;
 const STAGES = [
   { key: 'problem', label: 'Problem', icon: AlertTriangle, cls: 'text-[#B4462F] dark:text-[#F0A08C]' },
-  { key: 'investigation', label: 'Investigation', icon: Search, cls: 'text-[#8A6A1F] dark:text-[#E3C77A]' },
+  { key: 'investigation', label: 'Investigation', icon: Search, cls: 'text-[#735614] dark:text-[#E3C77A]' },
   { key: 'solution', label: 'Solution', icon: CheckCircle2, cls: 'text-emerald-700 dark:text-emerald-400' },
 ] as const;
 const openCase = (id: string) => window.dispatchEvent(new CustomEvent('open-case', { detail: id }));
@@ -18,10 +18,10 @@ const openCase = (id: string) => window.dispatchEvent(new CustomEvent('open-case
 function Tile({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return <div data-tile className={`rounded-[2rem] p-6 sm:p-8 ${className}`}>{children}</div>;
 }
-function TileHead({ icon: I, kicker, title, light }: { icon: typeof Bug; kicker: string; title: string; light?: boolean }) {
+function TileHead({ icon: I, kicker, title, light, tone }: { icon: typeof Bug; kicker: string; title: string; light?: boolean; tone?: string }) {
   return (
     <div>
-      <p className={`flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.16em] ${light ? 'text-[#D9E4DC]' : 'text-muted'}`}><I size={14} />{kicker}</p>
+      <p className={`flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.16em] ${tone ?? (light ? 'text-[#D9E4DC]' : 'text-muted')}`}><I size={14} />{kicker}</p>
       <h3 className="mt-2 text-2xl font-semibold leading-tight">{title}</h3>
     </div>
   );
@@ -57,7 +57,7 @@ function Debugging() {
 function ProblemSolving() {
   return (
     <Tile className="relative overflow-hidden bg-[#D9E4DC] text-[#24231F] lg:col-span-5">
-      <TileHead icon={Puzzle} kicker="Problem solving" title="DSA taught me to think before I type." />
+      <TileHead tone="text-[#45524A]" icon={Puzzle} kicker="Problem solving" title="DSA taught me to think before I type." />
       <p className="relative z-10 mt-3 max-w-[18rem] leading-relaxed text-[#45524A]">Competitive programming in C and C++. Breaking a problem into smaller ones is still how I start every feature.</p>
       <ul className="relative z-10 mt-4 flex max-w-[18rem] flex-wrap gap-1.5">{fundamentals.slice(0, 8).map((f) => <li key={f} className="rounded-full bg-white/60 px-2.5 py-0.5 text-xs">{f}</li>)}</ul>
       <div className="absolute -bottom-2 -right-4 w-44 sm:w-52"><Avatar pose="think" float={false} title="Illustration of Hitesh thinking" /></div>
@@ -69,7 +69,7 @@ function Initiative() {
   const ids = ['cairn', 'meeting-to-action', 'sensai'];
   return (
     <Tile className="bg-[#E8C6B8] text-[#24231F] lg:col-span-4">
-      <TileHead icon={Lightbulb} kicker="Initiative" title="When I notice a gap, I build for it." />
+      <TileHead tone="text-[#5C4A42]" icon={Lightbulb} kicker="Initiative" title="When I notice a gap, I build for it." />
       <ul className="mt-5 grid gap-2.5">
         {ids.map((id) => { const p = projects.find((x) => x.id === id)!; const g = caseStudies[id]?.gap.split('. ')[0].replace(/\.$/, ''); return (
           <li key={id}>

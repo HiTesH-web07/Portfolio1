@@ -20,8 +20,8 @@ const C = {
   hair: '#17120F', hairLight: '#3D2E25', beard: '#2B1F18', tee: '#1E1D1B', ink: '#24231F', cream: '#F1EBDD', clay: '#E8C6B8', sage: '#D9E4DC', lid: '#E4DDCD', lidEdge: '#C9C0AC', mouth: '#6B3326',
 };
 
-const LS = { x: 94, y: 300 }; // left shoulder (viewer's left)
-const RS = { x: 266, y: 300 };
+const LS = { x: 110, y: 304 }; // left shoulder (viewer's left)
+const RS = { x: 250, y: 304 };
 
 function Arm({ d, hand, front = false }: { d: string; hand: [number, number]; front?: boolean }) {
   const id = useContext(Ids);
@@ -31,15 +31,15 @@ function Arm({ d, hand, front = false }: { d: string; hand: [number, number]; fr
   const px = -dy, py = dx; // perpendicular
   const r = (v: number) => Math.round(v * 10) / 10; // same string on server and client
   const ang = r((Math.atan2(dy, dx) * 180) / Math.PI - 90);
-  const cuffX = hand[0] - dx * 15, cuffY = hand[1] - dy * 15;
+  const cuffX = hand[0] - dx * 13, cuffY = hand[1] - dy * 13;
   return (
     <g>
-      <path d={d} stroke={`url(#${id.hood})`} strokeWidth={33} strokeLinecap="round" fill="none" />
-      <path d={d} stroke="#fff" strokeOpacity={0.07} strokeWidth={10} strokeLinecap="round" fill="none" transform={`translate(${r(-px * 7)} ${r(-py * 7)})`} />
+      <path d={d} stroke={`url(#${id.hood})`} strokeWidth={26} strokeLinecap="round" fill="none" />
+      <path d={d} stroke="#fff" strokeOpacity={0.07} strokeWidth={8} strokeLinecap="round" fill="none" transform={`translate(${r(-px * 5)} ${r(-py * 5)})`} />
       <path d={d} stroke={C.hoodieDark} strokeOpacity={front ? 0.3 : 0.2} strokeWidth={2} strokeLinecap="round" fill="none" />
-      <line x1={r(cuffX + px * 14)} y1={r(cuffY + py * 14)} x2={r(cuffX - px * 14)} y2={r(cuffY - py * 14)} stroke={C.hoodieDark} strokeWidth={8} strokeLinecap="round" />
-      <ellipse cx={hand[0]} cy={hand[1]} rx={12} ry={14.5} fill={`url(#${id.skin})`} transform={`rotate(${ang} ${hand[0]} ${hand[1]})`} />
-      <ellipse cx={r(hand[0] + px * 11 - dx * 2)} cy={r(hand[1] + py * 11 - dy * 2)} rx={4.5} ry={8} fill={C.skin} transform={`rotate(${r(ang + 25)} ${r(hand[0] + px * 11 - dx * 2)} ${r(hand[1] + py * 11 - dy * 2)})`} />
+      <line x1={r(cuffX + px * 11)} y1={r(cuffY + py * 11)} x2={r(cuffX - px * 11)} y2={r(cuffY - py * 11)} stroke={C.hoodieDark} strokeWidth={6} strokeLinecap="round" />
+      <ellipse cx={hand[0]} cy={hand[1]} rx={10} ry={12.5} fill={`url(#${id.skin})`} transform={`rotate(${ang} ${hand[0]} ${hand[1]})`} />
+      <ellipse cx={r(hand[0] + px * 9 - dx * 2)} cy={r(hand[1] + py * 9 - dy * 2)} rx={4} ry={7} fill={C.skin} transform={`rotate(${r(ang + 25)} ${r(hand[0] + px * 9 - dx * 2)} ${r(hand[1] + py * 9 - dy * 2)})`} />
       <path d={`M${r(hand[0] - px * 7 + dx * 6)} ${r(hand[1] - py * 7 + dy * 6)} L${r(hand[0] + px * 5 + dx * 7)} ${r(hand[1] + py * 5 + dy * 7)}`} stroke={C.skinShade} strokeWidth={1.6} strokeLinecap="round" opacity={0.6} />
     </g>
   );
@@ -158,8 +158,8 @@ function Face({ expr, look }: { expr: Expression; look: { x: number; y: number }
     calm: ['M144 136 q14 -6 28 -1', 'M188 135 q14 -5 28 1'],
   };
   const mouth: Record<Expression, React.ReactNode> = {
-    smile: <g><path d="M164 191 Q180 210 196 191 Z" fill={C.mouth} /><path d="M166 192 Q180 199 194 192 Z" fill="#fff" /></g>,
-    joy: <g><path d="M161 189 Q180 218 199 189 Z" fill={C.mouth} /><path d="M163 190 Q180 199 197 190 Z" fill="#fff" /></g>,
+    smile: <g><path d="M167 193 Q180 205 193 193 Q180 198 167 193 Z" fill={C.mouth} /><path d="M169 193.5 Q180 197.5 191 193.5 Q180 195.5 169 193.5 Z" fill="#fff" /></g>,
+    joy: <g><path d="M165 191 Q180 210 195 191 Q180 195 165 191 Z" fill={C.mouth} /><path d="M167 191.5 Q180 196.5 193 191.5 Q180 193.5 167 191.5 Z" fill="#fff" /></g>,
     focus: <path d="M170 196 q10 3 20 0" stroke={C.mouth} strokeWidth={4.5} strokeLinecap="round" fill="none" />,
     puzzled: <path d="M167 198 q6 -5 12 0 q6 5 13 -1" stroke={C.mouth} strokeWidth={4.5} strokeLinecap="round" fill="none" />,
     curious: <ellipse cx={183} cy={196} rx={5.5} ry={6.5} fill={C.mouth} />,
@@ -168,7 +168,7 @@ function Face({ expr, look }: { expr: Expression; look: { x: number; y: number }
   return (
     <AnimatePresence mode="popLayout" initial={false}>
       <motion.g key={expr} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.25 }}>
-        <g stroke={C.hair} strokeWidth={6.5} strokeLinecap="round" fill="none">
+        <g stroke={C.hair} strokeWidth={5} strokeLinecap="round" fill="none">
           <path d={brows[expr][0]} /><path d={brows[expr][1]} />
         </g>
         {eyesHappy ? (
@@ -183,10 +183,10 @@ function Face({ expr, look }: { expr: Expression; look: { x: number; y: number }
             <path d="M191 156 C195 149 209 149 213 156" stroke={C.ink} strokeWidth={2.4} strokeLinecap="round" fill="none" />
             <clipPath id={eyeClip}><path d="M147 157 C151 149 165 149 169 157 C165 163 151 163 147 157 Z M191 157 C195 149 209 149 213 157 C209 163 195 163 191 157 Z" /></clipPath>
             <g clipPath={`url(#${eyeClip})`}><g style={{ transform: `translate(${look.x * 0.7}px, ${look.y * 0.5}px)`, transition: 'transform .45s cubic-bezier(.22,1,.36,1)' }}>
-              <circle cx={158} cy={157} r={6.2} fill="#4A3122" />
-              <circle cx={202} cy={157} r={6.2} fill="#4A3122" />
-              <circle cx={158} cy={157} r={3.4} fill="#120D0A" />
-              <circle cx={202} cy={157} r={3.4} fill="#120D0A" />
+              <circle cx={158} cy={157} r={5.4} fill="#4A3122" />
+              <circle cx={202} cy={157} r={5.4} fill="#4A3122" />
+              <circle cx={158} cy={157} r={2.9} fill="#120D0A" />
+              <circle cx={202} cy={157} r={2.9} fill="#120D0A" />
               <circle cx={160.2} cy={154.6} r={1.9} fill="#fff" />
               <circle cx={204.2} cy={154.6} r={1.9} fill="#fff" />
             </g></g>
@@ -218,22 +218,22 @@ export default function Avatar({
       <ellipse cx={180} cy={394} rx={130} ry={7} fill={C.ink} opacity={0.08} />
       <g className={float && !crop ? 'av-float' : undefined}>
         {/* body: olive bomber jacket, open over a black tee */}
-        <path d="M60 400 C60 304 102 256 180 252 C258 256 300 304 300 400 Z" fill={`url(#${ids.hood})`} />
-        <rect x={163} y={204} width={34} height={56} rx={15} fill={C.skinShade} />
-        <path d="M146 256 Q180 276 214 256 L224 400 L136 400 Z" fill={C.tee} />
-        <path d="M156 258 Q180 274 204 258" stroke={C.skinShade} strokeWidth={3} fill="none" opacity={0.6} />
-        <path d="M150 250 L124 262 L144 306 L160 264 Z" fill={C.hoodieLight} />
-        <path d="M210 250 L236 262 L216 306 L200 264 Z" fill={C.hoodieLight} />
-        <g stroke={C.hoodieDark} strokeWidth={2.5} strokeLinecap="round"><path d="M144 306 L140 400" /><path d="M216 306 L220 400" /></g>
-        <rect x={84} y={338} width={30} height={5} rx={2.5} fill={C.hoodieDark} opacity={0.5} />
-        <rect x={246} y={338} width={30} height={5} rx={2.5} fill={C.hoodieDark} opacity={0.5} />
+        <path d="M86 400 C86 314 118 264 180 260 C242 264 274 314 274 400 Z" fill={`url(#${ids.hood})`} />
+        <rect x={166} y={204} width={28} height={60} rx={13} fill={C.skinShade} />
+        <path d="M152 262 Q180 280 208 262 L216 400 L144 400 Z" fill={C.tee} />
+        <path d="M158 264 Q180 278 202 264" stroke={C.skinShade} strokeWidth={3} fill="none" opacity={0.6} />
+        <path d="M154 258 L132 270 L150 308 L163 270 Z" fill={C.hoodieLight} />
+        <path d="M206 258 L228 270 L210 308 L197 270 Z" fill={C.hoodieLight} />
+        <g stroke={C.hoodieDark} strokeWidth={2.5} strokeLinecap="round"><path d="M150 308 L146 400" /><path d="M210 308 L214 400" /></g>
+        <rect x={100} y={340} width={26} height={5} rx={2.5} fill={C.hoodieDark} opacity={0.5} />
+        <rect x={234} y={340} width={26} height={5} rx={2.5} fill={C.hoodieDark} opacity={0.5} />
 
         <AnimatePresence initial={false}>
           <motion.g key={`b-${pose}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }} transition={t}>{L.back}</motion.g>
         </AnimatePresence>
 
         <ellipse cx={180} cy={222} rx={20} ry={7} fill={C.skinShade} opacity={0.9} />
-        <g transform="translate(180 232) scale(0.92) translate(-180 -232)">
+        <g transform="translate(180 232) scale(0.85 0.92) translate(-180 -232)">
         {/* head: drawn from Hitesh's photos */}
         <defs>
           <radialGradient id={`${ids.hair}b`} cx=".5" cy=".95" r=".75">
@@ -269,14 +269,14 @@ export default function Avatar({
         </g>
 
         {/* short trimmed beard: light along the jaw, fuller at the chin, cheeks clear */}
-        <path d="M121 150 C121 190 138 222 180 229 C222 222 239 190 239 150 C235 150 234 154 233 160 C230 184 220 200 206 207 C198 211 190 212 180 212 C170 212 162 211 154 207 C140 200 130 184 127 160 C126 154 125 150 121 150 Z" fill={`url(#${ids.hair}b)`} />
+        <path d="M121 150 C121 190 138 222 180 229 C222 222 239 190 239 150 C235 150 234 154 233 160 C230 184 220 200 206 207 C198 211 190 212 180 212 C170 212 162 211 154 207 C140 200 130 184 127 160 C126 154 125 150 121 150 Z" fill={`url(#${ids.hair}b)`} opacity={0.8} />
         {/* moustache, split in the middle */}
         <path d="M161 187 C166 180 174 179 179 182 C176 186 168 188 161 187 Z" fill={C.beard} />
         <path d="M199 187 C194 180 186 179 181 182 C184 186 192 188 199 187 Z" fill={C.beard} />
         {/* blush and nose */}
         <ellipse cx={145} cy={172} rx={10} ry={5} fill="#E58D74" opacity={0.14} />
         <ellipse cx={215} cy={172} rx={10} ry={5} fill="#E58D74" opacity={0.14} />
-        <path d="M181 156 q5 14 -4 19" stroke={C.skinShade} strokeWidth={3.5} strokeLinecap="round" fill="none" />
+        <path d="M180 158 q4 12 -3 16 q4 2 8 0" stroke={C.skinShade} strokeWidth={3.5} strokeLinecap="round" fill="none" />
         <Face expr={expr} look={lookIn} />
         </g>
 

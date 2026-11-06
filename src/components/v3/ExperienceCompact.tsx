@@ -17,7 +17,7 @@ function CompanyCard({ co, points, dark }: { co: (typeof COMPANIES)[number]; poi
     <article data-co className={`flex flex-col rounded-[2rem] p-6 shadow-soft sm:p-8 ${base}`}>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h3 className="font-display text-4xl font-semibold tracking-tight sm:text-5xl">{co.mark}</h3>
+          <h3 className={`font-display text-4xl font-semibold tracking-tight sm:text-5xl ${dark ? '[&_span]:!text-[#E8C6B8]' : ''}`}>{co.mark}</h3>
           <p className="mt-3 font-medium">{co.role}</p>
           <p className={`text-sm ${sub}`}>{co.company} · {co.when}</p>
           <p className={`text-sm ${sub}`}>{co.where}</p>

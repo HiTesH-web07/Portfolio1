@@ -66,11 +66,11 @@ export default function SelectedWork() {
     <section id="work" ref={root} aria-labelledby="work-title" className="py-20 sm:py-24">
       <div className="wrap">
         <SectionHead id="work-title" eyebrow="03 · Selected work" title="I noticed a gap," accent="so I built." />
-        <article data-work className="group mt-12 grid items-center gap-10 rounded-[2rem] bg-[#F6F1E6] p-5 dark:bg-paper sm:p-8 lg:grid-cols-12 lg:p-10">
+        <article data-work className="group mt-12 grid items-center gap-10 rounded-[2rem] bg-[#F6F1E6] p-5 dark:bg-paper sm:p-8 lg:grid-cols-12 lg:p-10 [&>*]:min-w-0">
           <button onClick={() => show(first.id)} className="block text-left lg:col-span-7" aria-label={`Open the ${first.name} case study`}><div data-feature-shot><Shot p={first} url={featuredWork[0].url} big /></div></button>
           <div className="lg:col-span-5"><Meta p={first} onCase={() => show(first.id)} /></div>
         </article>
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <div className="mt-6 grid gap-6 md:grid-cols-2 [&>*]:min-w-0">
           {others.map((p) => (
             <article key={p.id} data-work className="group flex flex-col rounded-[2rem] border border-line bg-paper p-5 sm:p-7">
               <button onClick={() => show(p.id)} className="block text-left" aria-label={`Open the ${p.name} case study`}><Shot p={p} url={featuredWork.find((f) => f.id === p.id)?.url} /></button>

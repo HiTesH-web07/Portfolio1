@@ -10,11 +10,11 @@ const geistMono = localFont({ src: './fonts/geist-mono-latin-wght-normal.woff2',
 
 const site = process.env.SITE_URL || 'https://hitesh-ahuja.embarko.app';
 const description =
-  'Hitesh Ahuja is a full-stack developer at viaSocket who builds web products end to end with React, Next.js and Node.js, and automates the work in between.';
+  'Hitesh Ahuja is a full-stack developer building web applications, API integrations and workflow automation with React, Next.js and Node.js. Product development and integrations at viaSocket.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(site),
-  title: `${profile.name} · Full-stack developer`,
+  title: `${profile.name} · Full-Stack Developer`,
   description,
   alternates: { canonical: '/' },
   authors: [{ name: profile.name, url: profile.linkedin }],
