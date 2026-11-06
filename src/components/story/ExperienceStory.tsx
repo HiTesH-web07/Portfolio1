@@ -6,20 +6,20 @@ import Avatar from '../avatar/Avatar';
 import { gsap, SectionHead, revealSection, useGsap } from '../ui/motion';
 import type { Pose } from '@/data/content';
 
-type Contribution = { value?: number; suffix?: string; big?: string; text: string; layer: 'Interface' | 'Backend' | 'Automation' | 'Quality' | 'Performance' };
+type Contribution = { value?: number; suffix?: string; big?: string; short: string; text: string; layer: 'Interface' | 'Backend' | 'Automation' | 'Quality' | 'Performance' };
 type Company = { id: string; mark: React.ReactNode; company: string; role: string; when: string; where: string; pose: Pose; context: string[]; items: Contribution[]; stack: string[] };
 
 // Every figure below comes from the master resume.
-const COMPANIES: Company[] = [
+export const COMPANIES: Company[] = [
   {
     id: 'viasocket', company: 'Walkover Web Solution', role: 'Integration Solution Engineer', when: 'May 2026 – Present', where: 'Indore, India (Remote)', pose: 'think',
     mark: <>via<span className="text-[#B4462F] dark:text-[#E8C6B8]">Socket</span></>,
     context: ['Platform scale: 100,000+ users', '2,200+ connected SaaS apps'],
     items: [
-      { big: 'Full stack', text: 'Ship product features across the React and Next.js frontend and the Node.js backend.', layer: 'Interface' },
-      { value: 100, suffix: '+', text: 'Reusable integration modules I designed, built, tested and maintain, with OAuth 2.0, API keys, webhooks, pagination and data mapping.', layer: 'Backend' },
-      { big: 'Automations', text: 'Multi-step workflows that connect apps so people stop doing repetitive work.', layer: 'Automation' },
-      { big: '4xx / 5xx', text: 'Root-caused API errors and pagination mismatches by testing against live endpoints.', layer: 'Quality' },
+      { big: 'Full stack', short: 'Features across React, Next.js and Node.js', text: 'Ship product features across the React and Next.js frontend and the Node.js backend.', layer: 'Interface' },
+      { value: 100, suffix: '+', short: 'Integration modules built and maintained', text: 'Reusable integration modules I designed, built, tested and maintain, with OAuth 2.0, API keys, webhooks, pagination and data mapping.', layer: 'Backend' },
+      { big: 'Automations', short: 'Multi-step workflows connecting apps', text: 'Multi-step workflows that connect apps so people stop doing repetitive work.', layer: 'Automation' },
+      { big: '4xx / 5xx', short: 'API errors root-caused on live endpoints', text: 'Root-caused API errors and pagination mismatches by testing against live endpoints.', layer: 'Quality' },
     ],
     stack: ['Next.js', 'React', 'Node.js', 'OAuth 2.0', 'Webhooks', 'Postman'],
   },
@@ -28,16 +28,16 @@ const COMPANIES: Company[] = [
     mark: <>Think<span className="text-[#B4462F] dark:text-[#E8C6B8]">.</span>Debug</>,
     context: ['Six-engineer Agile team', 'Weekly sprints, code reviews'],
     items: [
-      { value: 15, suffix: '+', text: 'Reusable, responsive React components with Tailwind CSS.', layer: 'Interface' },
-      { value: 20, suffix: '+', text: 'REST APIs integrated with Axios, with loading and error states and Redux Toolkit state.', layer: 'Backend' },
-      { value: 18, suffix: '%', text: 'Faster frontend after refactoring components and cutting re-renders.', layer: 'Performance' },
-      { value: 30, suffix: '+', text: 'Defects debugged and resolved with browser DevTools alongside backend engineers.', layer: 'Quality' },
+      { value: 15, suffix: '+', short: 'Reusable React components', text: 'Reusable, responsive React components with Tailwind CSS.', layer: 'Interface' },
+      { value: 20, suffix: '+', short: 'REST APIs integrated', text: 'REST APIs integrated with Axios, with loading and error states and Redux Toolkit state.', layer: 'Backend' },
+      { value: 18, suffix: '%', short: 'Faster frontend', text: 'Faster frontend after refactoring components and cutting re-renders.', layer: 'Performance' },
+      { value: 30, suffix: '+', short: 'Defects resolved', text: 'Defects debugged and resolved with browser DevTools alongside backend engineers.', layer: 'Quality' },
     ],
     stack: ['React', 'Redux Toolkit', 'Tailwind CSS', 'Axios'],
   },
 ];
 
-const LAYER = {
+export const LAYER = {
   Interface: { icon: LayoutTemplate, cls: 'bg-[#D9E4DC] text-[#24231F]' },
   Backend: { icon: Server, cls: 'bg-[#2D3A2E] text-[#F1EBDD]' },
   Automation: { icon: Workflow, cls: 'bg-[#E8C6B8] text-[#24231F]' },

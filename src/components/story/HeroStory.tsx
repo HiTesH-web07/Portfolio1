@@ -10,7 +10,7 @@ import { useChat } from '../chat/ChatContext';
 const INTEREST_ICONS = [Layers, Workflow, Sparkles];
 const LEAD_COLOR = ['text-[#2D3A2E] dark:text-[#D9E4DC]', 'text-[#B4462F] dark:text-[#E8C6B8]', 'text-[#2D3A2E] dark:text-[#D9E4DC]'];
 
-export default function HeroStory() {
+export default function HeroStory({ compact = false }: { compact?: boolean }) {
   const root = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const [look, setLook] = useState({ x: 0, y: 0 });
@@ -42,7 +42,7 @@ export default function HeroStory() {
   });
 
   return (
-    <section id="top" ref={root} className="relative overflow-x-clip pb-4 pt-28 sm:pt-32">
+    <section id="top" ref={root} className={`relative overflow-x-clip pt-28 sm:pt-32 ${compact ? 'pb-16 sm:pb-20' : 'pb-4'}`}>
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="drift absolute -right-48 -top-48 h-[38rem] w-[38rem] rounded-full bg-sage/80 blur-3xl" style={{ ['--t' as string]: '16s' }} />
         <div className="drift absolute -left-40 bottom-[20%] h-[22rem] w-[22rem] rounded-full bg-clay/30 blur-3xl" style={{ ['--t' as string]: '20s' }} />
@@ -88,6 +88,7 @@ export default function HeroStory() {
         </div>
       </div>
 
+      {!compact && (<>
       <dl data-fade className="wrap mt-14 grid gap-6 border-t border-line pt-8 sm:grid-cols-3">
         {heroStory.facts.map((f) => (
           <div key={f.k}><dt className="eyebrow">{f.k}</dt><dd className="mt-2 font-display text-lg">{f.v}</dd></div>
@@ -97,6 +98,7 @@ export default function HeroStory() {
         <span className="font-serif text-lg italic">Read my story</span>
         <span aria-hidden className="relative block h-12 w-px overflow-hidden bg-line"><span className="thread-dot absolute left-0 top-0 h-6 w-px bg-ink" /></span>
       </a>
+      </>)}
     </section>
   );
 }

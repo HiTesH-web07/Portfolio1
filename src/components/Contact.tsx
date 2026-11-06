@@ -7,7 +7,7 @@ import { ScrollTrigger, SplitWords, revealSection, useGsap } from './ui/motion';
 import { profile } from '@/data/content';
 import type { Pose } from '@/data/content';
 
-export default function Contact() {
+export default function Contact({ num = '08' }: { num?: string }) {
   const root = useRef<HTMLElement>(null);
   const [pose, setPose] = useState<Pose>('laptop');
   const [copied, setCopied] = useState(false);
@@ -34,7 +34,7 @@ export default function Contact() {
       <div aria-hidden className="absolute -right-32 top-10 h-96 w-96 rounded-full bg-[#2D3A2E] blur-2xl" />
       <div className="wrap relative grid gap-12 lg:grid-cols-12 lg:items-end">
         <div className="lg:col-span-7">
-          <p className="eyebrow !text-[#D9E4DC]">08 · Let&apos;s connect</p>
+          <p className="eyebrow !text-[#D9E4DC]">{num} · Let&apos;s connect</p>
           <h2 id="contact-title" data-split className="mt-5 font-display text-[2.6rem] font-semibold leading-[1.02] sm:text-7xl">
             <SplitWords text="The journey is still being built." />{' '}
             <SplitWords text="Let's build something together." className="serif text-[#E8C6B8]" />

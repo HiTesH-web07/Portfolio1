@@ -476,3 +476,115 @@ export const caseStudies: Record<string, { label: 'Independent project' | 'Perso
     ],
   },
 };
+
+// ---------- Journey v2 (preview): concise, factual, five chapters ----------
+export type Step = {
+  id: string; numeral: string; kind: 'Education' | 'Employment' | 'Independent' | 'Exploring'; when: string; title: string;
+  did: string; learned: string; evidence: string[]; next?: string;
+  pose: Pose; expression: 'smile' | 'joy' | 'focus' | 'puzzled' | 'curious' | 'calm';
+  tone: 'cream' | 'sage' | 'forest' | 'clay' | 'ink'; artifact: 'notebook' | 'kulies' | 'workflow' | 'products' | 'ai';
+};
+
+export const steps: Step[] = [
+  {
+    id: 'college', numeral: 'I', kind: 'Education', when: '2022 – 2026 · B.Tech CSE, Medi-Caps University, Indore', tone: 'cream', artifact: 'notebook', pose: 'wave', expression: 'smile',
+    title: 'Where curiosity turned into code',
+    did: 'I started with C and C++, then spent most of my practice on data structures and algorithms: dynamic programming, graphs (BFS, Dijkstra), binary search, backtracking and bitmask DP. Later I moved to the web, building small React and Next.js apps.',
+    learned: 'To break a problem into steps before writing code, and the OOP and MVC basics behind larger codebases.',
+    evidence: ['C / C++', 'DSA', 'OOP', 'React', 'Next.js', 'CGPA 7.92'],
+    next: 'Next, I wanted to see how this works inside a real product, with a team.',
+  },
+  {
+    id: 'thinkdebug', numeral: 'II', kind: 'Employment', when: 'Feb – Apr 2025 · Frontend Developer Intern, Think Debug', tone: 'sage', artifact: 'kulies', pose: 'laptop', expression: 'focus',
+    title: 'My first taste of real product engineering',
+    did: 'I worked on Kulies, a B2B2C e-commerce app, in a six-engineer Agile team: product listing, cart, wishlist and real-time pricing, shipped in weekly sprints with code reviews.',
+    learned: 'To write components other engineers can reuse, and to measure performance instead of guessing.',
+    evidence: ['15+ React components', '20+ REST APIs', '18% faster frontend', '30+ defects fixed'],
+    next: 'Calling APIs from the frontend made me want to understand what happens behind them.',
+  },
+  {
+    id: 'viasocket', numeral: 'III', kind: 'Employment', when: 'May 2026 – now · Integration Solution Engineer, Walkover (viaSocket)', tone: 'forest', artifact: 'workflow', pose: 'think', expression: 'focus',
+    title: 'Understanding systems beyond the UI',
+    did: 'On viaSocket, a no-code AI automation platform built on Next.js and Node.js, I build integration modules that connect it to third-party APIs, multi-step workflow automations, and the forms users configure them with.',
+    learned: 'How systems talk to each other: OAuth 2.0, API keys, webhooks, pagination and data mapping, and how to debug 4xx/5xx errors against live endpoints.',
+    evidence: ['100+ integration modules', 'Workflow automation', 'OAuth 2.0', 'Webhooks', 'Node.js'],
+    next: 'Seeing how much work automation removes, I started building products for problems I noticed.',
+  },
+  {
+    id: 'products', numeral: 'IV', kind: 'Independent', when: 'Independent projects', tone: 'clay', artifact: 'products', pose: 'celebrate', expression: 'joy',
+    title: 'From identifying problems to building products',
+    did: 'SENSAI gives resume and interview-prep guidance with the Gemini API. Meeting-to-Action Closer turns meeting transcripts into Asana tasks and Slack summaries. Cairn measures the value of work, not the volume. I built each one end to end.',
+    learned: 'Owning a whole product: the data model, API, UI, tests and deployment.',
+    evidence: ['SENSAI', 'Meeting-to-Action Closer', 'Cairn', '47 tests', '35% faster load (SENSAI)'],
+    next: 'Most of these products use AI, which is where most of my learning goes now.',
+  },
+  {
+    id: 'next', numeral: 'V', kind: 'Exploring', when: 'Now · and next', tone: 'ink', artifact: 'ai', pose: 'explore', expression: 'curious',
+    title: "Always exploring what's next",
+    did: 'I build with AI in my products and use AI tools in my daily workflow. Now I am learning how to build systems that plan and act on their own: AI agents that call tools and APIs.',
+    learned: 'Where AI genuinely helps a workflow, and where a plain automation is the better tool.',
+    evidence: ['Gemini API', 'LLM features', 'Agentic AI', 'Automation'],
+  },
+];
+
+// Chapter V detail: every item is either used in a real project or clearly marked as exploring.
+export type TechItem = { name: string; status: 'used' | 'exploring'; where: string; link?: string };
+export const exploring: { group: string; items: TechItem[] }[] = [
+  {
+    group: 'AI and Generative AI',
+    items: [
+      { name: 'Gemini API', status: 'used', where: 'SENSAI, Ask Cairn and this site\'s Ask Hitesh', link: 'sensai' },
+      { name: 'LLM-powered features', status: 'used', where: 'Meeting-to-Action Closer turns transcripts into tasks', link: 'meeting-to-action' },
+      { name: 'Prompt engineering', status: 'used', where: 'Grounded prompts with injection guards in Ask Cairn and Ask Hitesh', link: 'cairn' },
+      { name: 'AI-assisted development', status: 'used', where: 'Claude Code daily, with every line reviewed and tested' },
+    ],
+  },
+  {
+    group: 'AI agents and automation',
+    items: [
+      { name: 'Workflow automation', status: 'used', where: 'Multi-step automations at viaSocket' },
+      { name: 'API orchestration', status: 'used', where: '100+ integration modules; Asana, Slack, Calendar and Fireflies in one flow', link: 'meeting-to-action' },
+      { name: 'AI business workflows', status: 'used', where: 'AI extraction feeding Asana and Slack in Meeting-to-Action Closer', link: 'meeting-to-action' },
+      { name: 'Agentic AI', status: 'exploring', where: 'IBM Agentic AI course (2026); agents that call tools and APIs' },
+    ],
+  },
+  {
+    group: 'Modern software engineering',
+    items: [
+      { name: 'Next.js and TypeScript', status: 'used', where: 'Meeting-to-Action Closer (Next.js, TypeScript); Next.js at viaSocket', link: 'meeting-to-action' },
+      { name: 'Node.js and PostgreSQL', status: 'used', where: 'SENSAI, Meeting-to-Action Closer (Prisma)', link: 'sensai' },
+      { name: 'Testing and debugging', status: 'used', where: '47 tests in Meeting-to-Action Closer, 27 in Cairn', link: 'cairn' },
+      { name: 'OpenRouter', status: 'exploring', where: 'Using OpenRouter to try different LLMs' },
+    ],
+  },
+];
+
+// ---------- v3 (preview): concise 7-section site ----------
+export const milestones: { id: string; numeral: string; kind: 'Education' | 'Employment' | 'Independent'; when: string; title: string; text: string; learned: string; tags: string[]; pose: Pose; tone: 'cream' | 'sage' | 'forest' | 'clay' }[] = [
+  { id: 'college', numeral: 'I', kind: 'Education', when: '2022 – 2026', title: 'Where curiosity turned into code', pose: 'wave', tone: 'cream',
+    text: 'B.Tech CSE at Medi-Caps University. I started with C, C++ and DSA, then moved to building web apps with React and Next.js.',
+    learned: 'Break the problem into steps before writing code.', tags: ['C / C++', 'DSA', 'React'] },
+  { id: 'thinkdebug', numeral: 'II', kind: 'Employment', when: '2025 · Think Debug', title: 'My first real product codebase', pose: 'laptop', tone: 'sage',
+    text: 'A frontend internship on Kulies, a B2B2C e-commerce app, in a six-engineer team shipping every week with code reviews.',
+    learned: 'Write components others can reuse, and measure before optimising.', tags: ['React', 'Redux Toolkit', 'Tailwind'] },
+  { id: 'viasocket', numeral: 'III', kind: 'Employment', when: '2026 – now · viaSocket', title: 'Systems beyond the UI', pose: 'think', tone: 'forest',
+    text: 'Full-stack work on a no-code AI automation platform: integrations with third-party APIs, workflow automations and the UI to configure them.',
+    learned: 'How systems talk: OAuth, webhooks, pagination and live API debugging.', tags: ['Next.js', 'Node.js', 'Automation'] },
+  { id: 'products', numeral: 'IV', kind: 'Independent', when: 'Independent', title: 'From problems to products', pose: 'celebrate', tone: 'clay',
+    text: 'I build products for gaps I notice: an AI career coach, a meeting-to-tasks tool and a work-value tracker, each end to end.',
+    learned: 'Own the whole product: data, API, UI, tests and deployment.', tags: ['SENSAI', 'Meeting-to-Action', 'Cairn'] },
+];
+
+export const featuredWork: { id: string; pitch: string; url?: string }[] = [
+  { id: 'cairn', pitch: 'A weekly ranked Priority Stack, quality ratings and disputes, with no activity tracking. Ask Cairn, a Gemini helper, explains but never scores.', url: 'proof-of-impact.embarko.app' },
+  { id: 'meeting-to-action', pitch: 'Turns meeting transcripts into Asana tasks with AI and posts summaries to Slack. Owners update status from Slack and it syncs back.', url: 'meeting-to-action-closer.embarko.app' },
+  { id: 'sensai', pitch: 'Resume and interview-prep guidance from the Gemini API, with Clerk authentication and PostgreSQL through Prisma.' },
+];
+
+export const v3nav = [
+  { id: 'journey', label: 'Journey' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'work', label: 'Work' },
+  { id: 'beyond', label: 'Beyond' },
+  { id: 'contact', label: 'Contact' },
+];

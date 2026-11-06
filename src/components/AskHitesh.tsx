@@ -6,7 +6,7 @@ import Avatar from './avatar/Avatar';
 import { SectionHead, revealSection, useGsap } from './ui/motion';
 import { profile } from '@/data/content';
 
-export default function AskHitesh() {
+export default function AskHitesh({ num = '05' }: { num?: string }) {
   const root = useRef<HTMLElement>(null);
   useGsap(root, () => revealSection(root.current));
 
@@ -15,7 +15,7 @@ export default function AskHitesh() {
       <div aria-hidden className="absolute -left-24 top-24 h-80 w-80 rounded-full bg-[#3E5040] blur-2xl" />
       <div className="wrap relative grid gap-12 lg:grid-cols-12">
         <div className="min-w-0 lg:col-span-5">
-          <SectionHead id="ask-title" light eyebrow="05 · Ask Hitesh" title="Curious about my work?" accent="Just ask." intro="Meet Ask Hitesh, your AI-powered guide to my experience, projects and technical journey." />
+          <SectionHead id="ask-title" light eyebrow={`${num} · Ask Hitesh`} title="Curious about my work?" accent="Just ask." intro="Meet Ask Hitesh, your AI-powered guide to my experience, projects and technical journey." />
           <ul className="reveal mt-8 grid gap-3 text-[15px] text-[#D9E4DC]">
             <li className="flex gap-3"><Sparkles size={18} className="mt-0.5 shrink-0 text-[#E8C6B8]" />An AI assistant, not me in person. It answers from my resume and the projects on this page.</li>
             <li className="flex gap-3"><ShieldCheck size={18} className="mt-0.5 shrink-0 text-[#E8C6B8]" />It will not invent experience or numbers. If it does not know, it says so.</li>
