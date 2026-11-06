@@ -191,7 +191,7 @@ export default function Avatar({
   const lookIn = pose === 'explore' ? { x: 3, y: 1 } : look;
   const t = { duration: reduce ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] as const };
   return (
-    <Ids.Provider value={ids}><svg viewBox={crop ? '92 52 176 176' : '0 0 360 400'} className={className} role="img" aria-label={title ?? `Illustration of Hitesh, ${pose}`}>
+    <Ids.Provider value={ids}><svg viewBox={crop ? '88 38 184 196' : '0 0 360 400'} className={className} role="img" aria-label={title ?? `Illustration of Hitesh, ${pose}`}>
       <defs>
         <linearGradient id={ids.hood} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={C.hoodieLight} /><stop offset="1" stopColor={C.hoodie} /></linearGradient>
         <radialGradient id={ids.skin} cx=".38" cy=".32" r=".8"><stop offset="0" stopColor={C.skinLight} /><stop offset="1" stopColor={C.skin} /></radialGradient>
@@ -214,25 +214,48 @@ export default function Avatar({
           <motion.g key={`b-${pose}`} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 6 }} transition={t}>{L.back}</motion.g>
         </AnimatePresence>
 
-        {/* head */}
-        <ellipse cx={120} cy={160} rx={10} ry={15} fill={C.skinShade} />
-        <ellipse cx={240} cy={160} rx={10} ry={15} fill={C.skinShade} />
-        <ellipse cx={180} cy={152} rx={60} ry={74} fill={`url(#${ids.skin})`} />
-        {/* short faded sides */}
-        <ellipse cx={125} cy={124} rx={7} ry={17} fill={C.hair} opacity={0.35} />
-        <ellipse cx={235} cy={124} rx={7} ry={17} fill={C.hair} opacity={0.35} />
-        {/* volume on top, swept up and back */}
-        <path d="M119 140 C112 96 132 58 172 50 C202 44 240 54 251 84 C257 104 253 124 245 140 C241 122 234 110 224 103 C210 96 190 95 173 97 C156 100 140 110 130 122 C125 128 121 134 119 140 Z" fill={`url(#${ids.hair})`} />
-        <g stroke={C.hairLight} strokeWidth={4} strokeLinecap="round" fill="none" opacity={0.9}>
-          <path d="M150 74 C174 54 212 54 234 74" /><path d="M162 88 C186 72 216 74 236 90" />
+        {/* head: drawn from Hitesh's photos */}
+        <defs>
+          <radialGradient id={`${ids.hair}b`} cx=".5" cy=".95" r=".75">
+            <stop offset="0" stopColor={C.beard} stopOpacity={0.95} />
+            <stop offset=".55" stopColor={C.beard} stopOpacity={0.8} />
+            <stop offset="1" stopColor={C.beard} stopOpacity={0.45} />
+          </radialGradient>
+          <linearGradient id={`${ids.hair}f`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor={C.hair} stopOpacity={0.95} />
+            <stop offset=".55" stopColor={C.hair} stopOpacity={0.55} />
+            <stop offset="1" stopColor={C.hair} stopOpacity={0.15} />
+          </linearGradient>
+        </defs>
+        <ellipse cx={121} cy={160} rx={10} ry={15} fill={C.skinShade} />
+        <ellipse cx={239} cy={160} rx={10} ry={15} fill={C.skinShade} />
+        <path d="M121 150 C121 98 146 80 180 80 C214 80 239 98 239 150 C239 190 222 222 180 229 C138 222 121 190 121 150 Z" fill={`url(#${ids.skin})`} />
+
+        <clipPath id={`${ids.hair}c`}><path d="M121 150 C121 98 146 80 180 80 C214 80 239 98 239 150 C239 190 222 222 180 229 C138 222 121 190 121 150 Z" /></clipPath>
+        {/* short faded sides, kept inside the head outline */}
+        <g clipPath={`url(#${ids.hair}c)`}>
+          <path d="M116 160 C114 128 118 104 134 90 L144 114 C135 122 130 136 129 156 Z" fill={`url(#${ids.hair}f)`} />
+          <path d="M244 160 C246 128 242 104 226 90 L216 114 C225 122 230 136 231 156 Z" fill={`url(#${ids.hair}f)`} />
         </g>
-        {/* trimmed beard, moustache and chin */}
-        <path d="M122 166 C124 202 148 232 180 234 C212 232 236 202 238 166 C233 184 224 198 213 206 C203 213 192 216 180 216 C168 216 157 213 147 206 C136 198 127 184 122 166 Z" fill={C.beard} opacity={0.62} />
-        <path d="M163 186 Q171 179 180 183 Q189 179 197 186 Q189 188 180 187 Q171 188 163 186 Z" fill={C.beard} />
-        <ellipse cx={180} cy={211} rx={8} ry={6} fill={C.beard} opacity={0.9} />
-        <ellipse cx={144} cy={176} rx={10} ry={5} fill="#E58D74" opacity={0.16} />
-        <ellipse cx={216} cy={176} rx={10} ry={5} fill="#E58D74" opacity={0.16} />
-        <path d="M181 158 q5 13 -4 18" stroke={C.skinShade} strokeWidth={3.5} strokeLinecap="round" fill="none" />
+
+        {/* longer top, swept up and back into a soft quiff */}
+        <path d="M124 124 C118 92 132 66 160 56 C182 48 214 48 234 60 C250 70 256 90 248 118 C242 106 230 100 216 98 C198 96 180 97 166 100 C150 104 136 112 124 124 Z" fill={`url(#${ids.hair})`} />
+        <path d="M130 112 C126 84 146 60 178 54 C206 50 230 58 244 76 C228 70 208 68 190 72 C168 76 150 88 142 106 Z" fill={C.hair} />
+        <path d="M142 106 C136 98 136 88 142 82 C146 92 156 98 170 99 Z" fill={C.hair} />
+        <g stroke={C.hairLight} strokeWidth={3} strokeLinecap="round" fill="none" opacity={0.75}>
+          <path d="M140 98 C144 78 164 62 192 58" /><path d="M158 94 C166 76 186 66 214 64" />
+          <path d="M180 94 C190 80 208 72 232 74" /><path d="M202 97 C214 86 228 84 244 90" />
+        </g>
+
+        {/* short trimmed beard: light along the jaw, fuller at the chin, cheeks clear */}
+        <path d="M121 150 C121 190 138 222 180 229 C222 222 239 190 239 150 C235 150 234 154 233 160 C230 184 220 200 206 207 C198 211 190 212 180 212 C170 212 162 211 154 207 C140 200 130 184 127 160 C126 154 125 150 121 150 Z" fill={`url(#${ids.hair}b)`} />
+        {/* moustache, split in the middle */}
+        <path d="M161 187 C166 180 174 179 179 182 C176 186 168 188 161 187 Z" fill={C.beard} />
+        <path d="M199 187 C194 180 186 179 181 182 C184 186 192 188 199 187 Z" fill={C.beard} />
+        {/* blush and nose */}
+        <ellipse cx={145} cy={172} rx={10} ry={5} fill="#E58D74" opacity={0.14} />
+        <ellipse cx={215} cy={172} rx={10} ry={5} fill="#E58D74" opacity={0.14} />
+        <path d="M181 156 q5 14 -4 19" stroke={C.skinShade} strokeWidth={3.5} strokeLinecap="round" fill="none" />
         <Face expr={expr} look={lookIn} />
 
         <AnimatePresence initial={false}>
